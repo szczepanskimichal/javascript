@@ -577,3 +577,355 @@
 // Wywołanie funkcji createArrayOfNumbers(29, 34) zwraca [29, 30, 31, 32, 33, 34]
 // Wywołanie funkcji createArrayOfNumbers() z losowymi liczbami min i max zwraca prawidłową tablicę
 // W pętli for wykorzystywana jest metoda push
+
+// function createArrayOfNumbers(min, max) {
+//   const number = [];
+//   for (let i = min; i <= max; i++) {
+//     number.push(i);
+//   }
+//   return number;
+// }
+
+// console.log(createArrayOfNumbers(1, 3));
+// console.log(createArrayOfNumbers(14, 17));
+// console.log(createArrayOfNumbers(29, 34));
+// console.log(createArrayOfNumbers());
+
+//Ex 23  FILTROWANIE TABLICY LICZB
+
+// Napisz funkcję filterArray(numbers, value), która przyjmuje tablicę liczb (parametr numbers) i zwraca nową tablicę, w której będą tylko te elementy tablicy numbers, które są większe niż wartość parametru value (liczba).
+
+// Zadeklarowano funkcję filterArray(numbers, value)
+// Wywołanie funkcji filterArray([1, 2, 3, 4, 5], 3) zwraca [4, 5]
+// Wywołanie funkcji filterArray([1, 2, 3, 4, 5], 4) zwraca [5]
+// Wywołanie funkcji filterArray([1, 2, 3, 4, 5], 5) zwraca []
+// Wywołanie funkcji filterArray([12, 24, 8, 41, 76], 38) zwraca [41, 76]
+// Wywołanie funkcji filterArray([12, 24, 8, 41, 76], 20) zwraca [24, 41, 76]
+// Wywołanie funkcji filterArray() z losową tablicą i liczbą zwraca prawidłową tablicę
+// W pętli for wykorzystywana jest metoda push
+
+// function filterArray(numbers, value) {
+//   const filteredArray = [];
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (numbers[i] > value) {
+//       filteredArray.push(numbers[i]);
+//     }
+//   }
+//   return filteredArray;
+// }
+// console.log(filterArray([1, 2, 3, 4, 5], 3));
+// console.log(filterArray([1, 2, 3, 4, 5], 4));
+// console.log(filterArray([1, 2, 3, 4, 5], 5));
+// console.log(filterArray([12, 24, 8, 41, 76], 38));
+// console.log(filterArray([12, 24, 8, 41, 76], 20));
+// console.log();
+
+//Ex 24
+
+// Metoda includes(value) sprawdza, czy w tablicy znajduje się element z wartością podaną dla parametru value i zwraca odpowiednio true lub false. Metodę tę stosujemy tylko dla typów prymitywnych (ponieważ porównanie odbywa się poprzez precyzyjny operator ===) i wtedy kiedy nie potrzebujemy znać indeksu poszukiwanego elementu.
+
+// const planets = ["Earth", "Mars", "Venus"];
+
+// console.log(planets.includes("Earth")); // true
+// console.log(planets.includes("Mars")); // true
+// console.log(planets.includes("Venus")); // true
+// console.log(planets.includes("Jupiter")); // false
+
+// Funkcja checkFruit(fruit) przyjmuje string z nazwą owocu (parametr fruit) i sprawdza, czy dany owoc znajduje się na tablicy fruits.
+
+// Uzupełnij kod funkcji tak aby spełniał następujące zależności:
+
+// owoc jest w tablicy, funkcja zwraca true;
+// owocu nie ma w tablicy, funkcja zwraca false.
+// Zadeklarowano funkcję checkFruit(fruit)
+// Wywołanie checkFruit("plum") zwraca true
+// Wywołanie checkFruit("mandarin") zwraca false
+// Wywołanie checkFruit("pear") zwraca true
+// Wywołanie checkFruit("Pear") zwraca false
+// Wywołanie checkFruit("apple") zwraca true
+// Wywołanie funkcji checkFruit() z losowym słowem zwraca prawidłową wartość boolean
+// W funkcji wykorzystana była metoda includes
+
+// function checkFruit(fruit) {
+//   const fruits = ['apple', 'plum', 'pear', 'orange'];
+//   return fruit.includes(fruit);
+// }
+// console.log(checkFruit('plum'));
+// console.log(checkFruit('mandarin'));
+// console.log(checkFruit('pear'));
+// console.log(checkFruit('Pear'));
+// console.log(checkFruit('apple'));
+// console.log();
+
+//Ex 25 WSPÓLNE ELEMENTY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// Wspólnymi elementami tablic nazywane są te elementy, które są obecne we wszystkich tablicach które sprawdzamy. Operację taką nazywamy też intersection
+
+// Na przykład w dwóch tablicach [1, 3, 5] i [0, 8, 5, 3] wspólne będą liczby 3 i 5, ponieważ są obecne w obu oryginalnych tablicach. A liczby 0, 1 i 8 są obecne w tylko jednej z tablic.
+
+// Napisz funkcję getCommonElements(array1, array2), która otrzymuje dwie tablice dowolnej długości w parametrach array1 i array2 i zwraca nową tablicę składającą się z tych elementów, które są obecne w obu oryginalnych tablicach (Array Intersection). Jeśli tablice nie mają wspólnych elementów, zwracamy pustą tablicę.
+
+// Zadeklarowano funkcję getCommonElements(array1, array2)
+// Wywołanie getCommonElements([1, 2, 3], [2, 4]) zwraca [2]
+// Wywołanie getCommonElements([1, 2, 3], [2, 1, 17, 19]) zwraca [1, 2]
+// Wywołanie getCommonElements([24, 12, 27, 3], [12, 8, 3, 36, 27]) zwraca [12, 27, 3]
+// Wywołanie getCommonElements([10, 20, 30, 40], [4, 30, 17, 10, 40]) zwraca [10, 30, 40]
+// Wywołanie getCommonElements([1, 2, 3], [10, 20, 30]) zwraca []
+// Wywołanie funkcji getCommonElements() z dwiema losowymi tablicami zwraca prawidłową tablicę
+// W pętli for wykorzystane są metody includes i push
+
+// function getCommonElements(array1, array2) {
+//   const commonElements = [];
+//   for (let i = 0; i < array1.length; i++) {
+//     if (array2.includes(array1[i])) {
+//       commonElements.push(array1[i]);
+//     }
+//   }
+//   return commonElements;
+// }
+
+// console.log(getCommonElements([1, 2, 3], [2, 4]));
+// console.log(getCommonElements([1, 2, 3], [2, 1, 17, 19]));
+
+//EX 26
+
+// Instrukcja for...of deklaruje pętlę przechodzący przez obiekty pozwalające się iterować, takie jak tablice i stringi. Ciało pętli będzie wykonywać się dla wartości każdego elementu. Oferuje ona prostszą składnię względem pętli for, jeżeli niepotrzebny jest nam indeks poszczególnych elementów.
+
+// for (const variable of iterable) {
+//   // ciało cyklu
+// }
+// variable — zmienna, która będzie przechowywać wartość elementu dla każdej iteracji
+// iterable — zmienna, która zawiera iterowalne elementy, na przykład tablica lub string
+// const planets = ["Earth", "Mars", "Venus"];
+
+// for (const planet of planets) {
+//   console.log(planet);
+//}
+
+// Wykonaj refaktor kodu funkcji calculateTotalPrice(order) zamieniając pętlę for na for...of.
+
+// Zdeklarowano funkcję calculateTotalPrice(order)
+// Wywołanie funkcji calculateTotalPrice([12, 85, 37, 4]) zwraca 138
+// Wywołanie funkcji calculateTotalPrice([164, 48, 291]) zwraca 503
+// Wywołanie funkcji calculateTotalPrice([412, 371, 94, 63, 176]) zwraca 1116
+// Wywołanie funkcji calculateTotalPrice([]) zwraca 0
+// Wywołanie funkcji calculateTotalPrice() z losową tablicą liczb zwraca prawidłową sumę
+
+// function calculateTotalPrice(order) {
+//     let total = 0;
+//     // Change code below this line
+
+//     for (let i = 0; i < order.length; i += 1) {
+//       total += order[i];
+//     }
+
+//     // Change code above this line
+//     return total;
+//   }
+
+// function calculateTotalPrice(order) {
+//     let total = 0;
+
+//     for (const price of order) {
+//       total += price;
+//     }
+
+//     return total;
+//   }
+//console.log(calculateTotalPrice([12, 85, 37, 4]));
+
+//Ex 27  FILTROWANIE TABLICY LICZB 2.0!!!!!!!!!!!!!!!!!!!!!!!
+
+// Wykonaj refaktor funkcji filterArray(numbers, value) zamieniając pętlę for na for...of.
+
+// Zadeklarowano funkcję filterArray(numbers, value)
+// Wywołanie funkcji filterArray([1, 2, 3, 4, 5], 3) zwraca [4, 5]
+// Wywołanie funkcji filterArray([1, 2, 3, 4, 5], 4) zwraca [5]
+// Wywołanie funkcji filterArray([1, 2, 3, 4, 5], 5) zwraca []
+// Wywołanie funkcji filterArray([12, 24, 8, 41, 76], 38) zwraca [41, 76]
+// Wywołanie funkcji filterArray([12, 24, 8, 41, 76], 20) zwraca [24, 41, 76]
+// Wywołanie funkcji filterArray() z losową tablicą i liczbą zwraca prawidłową tablicę
+// Funkcja filterArray() wykorzystuje pętlę for..of
+
+// function filterArray(numbers, value) {
+//   const filteredNumbers = [];
+//   for (const number of numbers) {
+//     if (number > value) {
+//       filteredNumbers.push(number);
+//     }
+//   }
+//   return filteredNumbers;
+// }
+
+// console.log(filterArray([1, 2, 3, 4, 5], 3));
+
+//Ex 28
+
+// Operator % to modulo, zwraca on całkowitą resztę z dzielenia dwóch liczb – dzielnej (po lewej stronie) i dzielnika (po prawej).
+
+// 5 % 1 = 0;
+// // 5, podzielone na 1, równa się 5, i reszta - 0
+
+// 5 % 2 = 1;
+// //  5, podzielone na 2, równa się 2, i reszta - 1
+
+// 5 % 3 = 2;
+// //  5, podzielone na 3, równa się 1, i reszta - 2
+
+// 5 % 4 = 1;
+// //  5, podzielone na 4, równa się 1, i reszta - 1
+
+// 5 % 5 = 0;
+// //  5, podzielone na 5, równa się 1, i reszta - 0
+
+// Uzupełnij wyrażenia reszty z dzielenia tak, aby kod spełniał założenia testów.
+
+// Zadeklarowana zmienna a
+// Wartość zmiennej a to liczba 0
+// Zadeklarowana zmienna b
+// Wartość zmiennej b to liczba 1
+// Zadeklarowana zmienna c
+// Wartość zmiennej c to liczba 3
+// Zadeklarowana zmienna d
+// Wartość zmiennej d to liczba 5
+// Zadeklarowana zmienna e
+// Wartość zmiennej e to liczba 2
+
+// const a = 3 % 1;
+// const b = 4 % 3;
+// const c = 11 % 4;
+// const d = 12 % 7;
+// const e = 8 % 3;
+
+//Ex 29 LICZBY PARZYSTE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// Napisz funkcję getEvenNumbers(start, end), która zwróci tablicę wszystkich liczb parzystych od start do end (włącznie).
+
+// Zadeklarowano funkcję getEvenNumbers(start, end)
+// Wywołanie funkcji getEvenNumbers(2, 5) zwraca [2, 4]
+// Wywołanie funkcji getEvenNumbers(3, 11) zwraca [4, 6, 8, 10]
+// Wywołanie funkcji getEvenNumbers(6, 12) zwraca [6, 8, 10, 12]
+// Wywołanie funkcji getEvenNumbers(8, 8) zwraca [8]
+// Wywołanie funkcji getEvenNumbers(7, 7) zwraca []
+// Wywołanie funkcji getEvenNumbers() z losowymi start i end zwraca prawidłową tablicę
+
+// function getEvenNumbers (start, end){
+// for(let i = start; i <= end, i++){
+//     if (i%2===0) {
+//         EvenNumbers.push(i);
+//     }
+// }
+// return EvenNumbers;
+// }
+// console.log(getEvenNumbers(6, 12));
+
+// function getEvenNumbers(start, end) {
+//   if (start === undefined || end === undefined) {
+//     // Jeśli start lub end nie zostały podane, zwróć pustą tablicę
+//     return [];
+//   }
+
+//   const result = [];
+//   for (let number = start; number <= end; number++) {
+//     if (number % 2 === 0) {
+//       result.push(number);
+//     }
+//   }
+//   return result;
+// }
+
+// // Przykłady użycia:
+// console.log(getEvenNumbers(2, 5)); // Zwraca [2, 4]
+// console.log(getEvenNumbers(3, 11)); // Zwraca [4, 6, 8, 10]
+// console.log(getEvenNumbers(6, 12)); // Zwraca [6, 8, 10, 12]
+// console.log(getEvenNumbers(8, 8)); // Zwraca [8]
+// console.log(getEvenNumbers(7, 7)); // Zwraca []
+// console.log(getEvenNumbers);
+
+// Ex 30
+
+// Wykonywanie większości pętli można przerwać w dowolnym momencie. W tym celu istnieje operator break, który w pełni przerywa wykonywanie pętli (w przypadku zagnieżdżonych pętli jedynie "najbliższej" z nich).
+
+// Przykładowo szukamy liczby 3. Jak tylko wykonany zostanie warunek if, pętla zakończy swoje wykonywanie, kolejne iteracje nie zostaną wykonane co stanowi optymalizację.
+
+// for (let i = 0; i <= 5; i += 1) {
+//   console.log(i);
+
+//   if (i === 3) {
+//     console.log("Znaleźliśmy liczbę 3, przerywamy wykonanie pętli");
+//     break;
+//   }
+// }
+
+// console.log("Log po pętli");
+
+// Uzupełnij kod tak, aby w zmiennej number zapisywała się pierwsza liczba znajdująca się pomiędzy start i end, dzieląca się na 5 bez reszty.
+
+// Zadeklarowano zmienną start z wartością 6
+// Zadeklarowano zmienną end z wartością 27
+// Zadeklarowano zmienną number bez inicjalizacji
+// Końcowa wartość zmiennej number jest równa 10
+// W pętli for wykorzystuje się break w celu uniknięcia wykonania się niepotrzebnych iteracji
+
+// const start = 6;
+// const end = 27;
+// let number;
+
+// for (let i = start; i < end; i += 1) {
+//   if (i % 5 === 0) {
+//     number = i;
+//     break;
+//   }
+// }
+
+//Ex 31
+
+// Jeśli pętla znajduje się w ciele funkcji, to operator break nie przerywa wykonania funkcji, a przerwie tylko pętlę. W celu przerwania wykonania jednocześnie pętli i funkcji stosuje się operator return.
+
+// W przykładzie szukamy liczby 3. Jak tylko spełniony zostanie warunek if, zwracamy wartość przy użyciu słowa kluczowego return, które przerwie wykonanie zarówno pętli i funkcji.
+
+// function fn() {
+//   for (let i = 0; i <= 5; i+=) {
+//     console.log(i);
+
+//     if (i === 3) {
+//       console.log(
+//         'Znaleźliśmy liczbę 3, robimy zwrot, przerywając pętlę w funkcji'
+//       );
+//       return i;
+//     }
+//   }
+
+//   // Ten console.log nie wykona się
+//   console.log('Log po pętli w ciele funkcji');
+// }
+
+// const result = fn();
+// console.log('Log po wyjściu z funkcji');
+// console.log(`Rezultat wykonania funkcji ${result}`);
+
+// Ex 32
+
+// Napisz funkcję includes(array, value), która robi to samo, co metoda tablicy tablica.includes(wartość) - sprawdza, czy na tablicy array jest wartość value, zwracając true, jeżeli jest i false w przeciwnym wypadku.
+
+// W trakcie wykonywania tego zadania w ciele funkcji includes() nie można wykorzystywać metody tablica.includes(wartość).
+
+// Zadeklarowana funkcja includes(array, value)
+// Wywołanie includes([1, 2, 3, 4, 5], 3) zwraca true
+// Wywołanie includes([1, 2, 3, 4, 5], 17) zwraca false
+// Wywołanie includes(["Earth", "Mars", "Venus", "Jupiter", "Saturn"], "Jupiter") zwraca true
+// Wywołanie includes(["Earth", "Mars", "Venus", "Jupiter", "Saturn"], "Uranus") zwraca false
+// Wywołanie includes(["apple", "plum", "pear", "orange"], "plum") zwraca true
+// Wywołanie includes(["apple", "plum", "pear", "orange"], "kiwi") zwraca false
+// Wywołanie includes() dla losowej tablicy z losowym value zwraca prawidłową wartość boolowską
+// W funkcji includes wykorzystuje się for, return, ale nie metodę tablicy includes
+
+// function includes(array, value) {
+//   for (let cos = 0; cos <= array.length; cos++) {
+//     if (array[cos] === value) {
+//       return true;
+//     }
+//   }
+//   return false;
+// }
+// console.log(includes(['apple', 'plum', 'pear', 'orange'], 'plum'));
