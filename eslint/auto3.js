@@ -859,3 +859,1169 @@
 //   rgbColors.push(color.rgb);
 // }
 // console.log(hexColors);
+
+//Ex 18 POSZUKIWANIE OBIEKTU WEDŁUG WARTOŚCI WŁAŚCIWOŚCI
+
+// Napisz funkcję getProductPrice(productName) która przyjmuje jeden parametr productName - nazwę produktu. Funkcja powinna szukać obiektu produktu o tej nazwie (po właściwości name) w tablicy products i zwrócić jego cenę (właściwość price). Jeśli nie zostanie znaleziony żaden produkt o tej nazwie, funkcja powinna zwrócić null.
+
+// Zadeklarowano funkcję getProductPrice(productName).
+// Wywołanie getProductPrice("Radar") zwraca 1300.
+// Wywołanie getProductPrice("Grip") zwraca 1200.
+// Wywołanie getProductPrice("Scanner") zwraca 2700.
+// Wywołanie getProductPrice("Droid") zwraca 400.
+// Wywołanie getProductPrice("Engine") zwraca null.
+
+// const products = [
+//   { name: 'Radar', price: 1300, quantity: 4 },
+//   { name: 'Scanner', price: 2700, quantity: 3 },
+//   { name: 'Droid', price: 400, quantity: 7 },
+//   { name: 'Grip', price: 1200, quantity: 9 },
+// ];
+
+// function getProductPrice(productName) {
+//   for (const product of products) {
+//     if (product.name === productName) {
+//       return product.price;
+//     }
+//   }
+//   return;
+// }
+// console.log(getProductPrice('Radar'));
+
+//Ex 19 KOLEKCJA WARTOŚCI WŁAŚCIWOŚCI
+
+// Napisz funkcję getAllPropValues(propName), która przyjmuje jeden parametr - propName - nazwę (klucz) właściwości. Funkcja powinna zwracać tablicę wszystkich wartości właściwości o tej nazwie z każdego obiektu w tablicy products. Jeśli w obiektach nie ma właściwości o tej nazwie, funkcja powinna zwrócić pustą tablicę.
+
+// Zadeklarowano funkcję getAllPropValues(propName)
+// Wywołanie getAllPropValues("name") zwraca ["Radar", "Scanner", "Droid", "Grip"]
+// Wywołanie getAllPropValues("quantity") zwraca [4, 3, 7, 9]
+// Wywołanie getAllPropValues("price") zwraca [1300, 2700, 400, 1200]
+// Wywołanie getAllPropValues("category") zwraca []
+
+// const products = [
+//   { name: 'Radar', price: 1300, quantity: 4 },
+//   { name: 'Scanner', price: 2700, quantity: 3 },
+//   { name: 'Droid', price: 400, quantity: 7 },
+//   { name: 'Grip', price: 1200, quantity: 9 },
+// ];
+// function getAllPropValues(propName) {
+//   const propValues = [];
+
+//   for (const product of products) {
+//     if (product.hasOwnProperty(propName)) {
+//       propValues.push(product[propName]);
+//     }
+//   }
+//   return propValues;
+// }
+// console.log(getAllPropValues('name'));
+// console.log(getAllPropValues('price'));
+
+//Ex 20 CAŁKOWITY KOSZT TOWARU
+
+// Napisz funkcję calculateTotalPrice(productName), która przyjmuje jeden parametr productName - nazwę produktu. Funkcja powinna zwrócić całkowity koszt (cena * ilość) produktu o tej nazwie z tablicy products.
+
+// Zadeklarowano funkcję calculateTotalPrice(productName)
+// Wywołanie calculateTotalPrice("Blaster") zwraca 0
+// Wywołanie calculateTotalPrice("Radar") zwraca 5200
+// Wywołanie calculateTotalPrice("Droid") zwraca 2800
+// Wywołanie calculateTotalPrice("Grip") zwraca 10800
+// Wywołanie calculateTotalPrice("Scanner") zwraca 8100
+
+// const products = [
+//   { name: 'Radar', price: 1300, quantity: 4 },
+//   { name: 'Scanner', price: 2700, quantity: 3 },
+//   { name: 'Droid', price: 400, quantity: 7 },
+//   { name: 'Grip', price: 1200, quantity: 9 },
+// ];
+// function calculateTotalPrice(productName) {
+//   let totalPrice = 0;
+//   for (const product of products) {
+//     if (product.name === productName) {
+//       totalPrice = product.price * product.quantity;
+//       break;
+//     }
+//   }
+//   return totalPrice;
+// }
+// console.log(calculateTotalPrice('Blaster'));
+// console.log(calculateTotalPrice('Scanner'));
+
+//Ex 21
+
+// Złożone dane są zawsze reprezentowane jako obiekt. Wielokrotne wywołania właściwości obiektu wizualnie zanieczyszczają kod i są zwyczajnie mniej czytelne.
+
+// const book = {
+//   title: 'Ostatnie królestwo',
+//   author: 'Bernard Cornwell',
+//   genres: ['proza ​​historyczna', 'przygody'],
+//   public: true,
+//   rating: 8.38,
+// };
+
+// const accessType = book.public ? 'publiczny' : 'zamknięty';
+// const message = `Książka ${book.title} autorstwa ${book.author} z oceną ${book.rating} jest w dostępie ${accessType}.`;
+
+// Destrukturyzacja umożliwia „rozpakowanie” wartości właściwości obiektu do zmiennych lokalnych. Dzięki temu kod w miejscu ich użycia nie wymaga użycia wielu kropek i staje się czytelniejszy.
+
+// const book = {
+//   title: 'Ostatnie królestwo',
+//   author: 'Bernard Cornwell',
+//   genres: ['proza ​​historyczna', 'przygody'],
+//   public: true,
+//   rating: 8.38,
+// };
+
+// // Destrukturyzacja
+// const { title, author, public, rating, coverImage } = book;
+// console.log(coverImage); // undefined
+
+// const accessType = public ? 'publiczny' : 'zamknięty';
+// const message = `Książka ${title} autorstwa ${author} z oceną ${rating} jest w dostępie ${accessType}.`;
+// Destrukturyzacja zawsze znajduje się po lewej stronie operacji przypisania. Zmiennym wewnątrz nawiasów klamrowych przypisywane są wartości właściwości obiektu. Jeśli nazwa zmiennej i nazwa właściwości są takie same, to przypisanie ma miejsce, w przeciwnym razie zostanie mu przypisane undefined. Kolejność, w jakiej zmienne są deklarowane w nawiasach klamrowych, nie ma znaczenia ponieważ odnosimy się bezpośrednio po kluczach, natomiast obiekty jako takie nie mają kolejności tak jak ma to miejsce w przypadku tablic..
+
+// Otrzymaliśmy trzydniową prognozę maksymalnych temperatur i obliczamy średnią temperaturę z trzech dni (meanTemperature). Zastąp deklaracje zmiennych yesterday, today i tomorrow jedną operacją destrukturyzacji właściwości obiektu highTemperatures.
+
+// Zadeklarowano zmienną highTemperatures
+// Wartość zmiennej highTemperatures to obiekt
+// Zadeklarowano zmienną yesterday za pomocą destrukturyzacji
+// Wartość zmiennej yesterday to liczba 28
+// Zadeklarowano zmienną today za pomocą destrukturyzacji
+// Wartość zmiennej today to liczba 26
+// Zadeklarowano zmienną tomorrow za pomocą destrukturyzacji
+// Wartość zmiennej tomorrow to liczba 33
+// Zadeklarowano zmienną meanTemperature
+// Wartość zmiennej meanTemperature to liczba 29
+// Używana jest składnia destrukturyzacji obiektu highTemperatures
+
+// const highTemperatures = {
+//     yesterday: 28,
+//     today: 26,
+//     tomorrow: 33,
+//   };
+//   // Change code below this line
+
+//   //const yesterday = highTemperatures.yesterday;
+//   //const today = highTemperatures.today;
+//   //const tomorrow = highTemperatures.tomorrow;
+//   const { yesterday, today, tomorrow } = highTemperatures;
+//   // Change code above this line
+//   const meanTemperature = (yesterday + today + tomorrow) / 3;
+
+//Ex 22
+
+// Aby uniknąć przypisania undefined jako wartości podczas destrukturyzacji nieistniejących właściwości (co może mieć miejsce gdy nie mamy pewności, że obiekt który "rozpakowujemy" ma wszystkie właściwości), możesz ustawić domyślne wartości zmiennych, które zostaną przypisane tylko wtedy, gdy obiekt nie ma właściwości o tej samej nazwie.
+
+// const book = {
+//   title: 'Ostatnie królestwo',
+//   author: 'Bernard Cornwell',
+// };
+
+// // Dodaj zdjęcie na okładkę, jeśli nie ma go w obiekcie książki
+// const {
+//   title,
+//   coverImage = 'https://via.placeholder.com/640/480',
+//   author,
+// } = book;
+
+// console.log(title); // Ostatnie królestwo
+// console.log(author); // Bernard Cornwell
+// console.log(coverImage); // https://via.placeholder.com/640/480
+
+// Prognoza maksymalnej temperatury może mieć również opcjonalną właściwość icon - ikonę pogody. Zastąp deklaracje zmiennych yesterday, today, tomorrow i icon jedną operacją destrukturyzującą właściwości obiektu highTemperatures. Ustaw domyślną wartość dla icon - string "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg".
+
+// Zadeklarowano zmienną highTemperatures
+// Wartość zmiennej highTemperatures to obiekt
+// Zadeklarowano zmienną highTemperatures
+// Wartość zmiennej highTemperatures to obiekt
+// Zadeklarowano zmienną yesterday przy użyciu destrukturyzacji
+// Wartość zmiennej yesterday to liczba 28
+// Zadeklarowano zmienną today przy użyciu destrukturyzacji
+// Wartość zmiennej today to liczba 26
+// Zadeklarowano zmienną tomorrow przy użyciu destrukturyzacji
+// Wartość zmiennej tomorrow to liczba 33
+// Zadeklarowano zmienną icon przy użyciu destrukturyzacji
+// Wartość zmiennej icon to string "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg".
+// Używana jest destrukturyzacja obiektów
+
+// const highTemperatures = {
+//     yesterday: 28,
+//     today: 26,
+//     tomorrow: 33,
+//   };
+//   // Change code below this line
+
+//   //const yesterday = highTemperatures.yesterday;
+//   //const today = highTemperatures.today;
+//   //const tomorrow = highTemperatures.tomorrow;
+//   //const icon = highTemperatures.icon;
+//   const { yesterday, today, tomorrow, icon = "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg" } = highTemperatures;
+//   // Change code above this line
+//   const meanTemperature = (yesterday + today + tomorrow) / 3;
+
+//Ex 23
+
+// Podczas destrukturyzacji możesz zmienić nazwę zmiennej, do której rozpakowana jest wartość właściwości. Aby to zrobić, piszemy najpierw nazwę właściwości, z której chcemy uzyskać wartość, następnie dwukropek i wpisujemy nazwę właściwości obiektu.
+
+// const firstBook = {
+//   title: 'Ostatnie Królestwo',
+//   coverImage:
+//     'https://images-na.ssl-images-amazon.com/images/I/51b5YG6Y1rL.jpg',
+// };
+
+// const {
+//   title: firstTitle,
+//   coverImage: firstCoverImage = 'https://via.placeholder.com/640/480',
+// } = firstBook;
+
+// console.log(firstTitle); // Ostatnie Królestwo
+// console.log(firstCoverImage); // https://images-na.ssl-images-amazon.com/images/I/51b5YG6Y1rL.jpg
+
+// const secondBook = {
+//   title: 'Sen śmiesznego człowieka',
+// };
+
+// const {
+//   title: secondTitle,
+//   coverImage: secondCoverImage = 'https://via.placeholder.com/640/480',
+// } = secondBook;
+
+// console.log(secondTitle); // Sen śmiesznego człowieka
+// console.log(secondCoverImage); // https://via.placeholder.com/640/480
+// // Taki wpis brzmi "Utwórz zmienną firstTitle, w której należy umieścić wartość właściwości title z obiektu firstBook" itd.
+
+// Zastąp deklaracje zmiennych highYesterday, highToday, highTomorrow i highIcon jedną operacją destrukturyzacji właściwości obiektu highTemperatures. Pamiętaj, podobnie jak w poprzednim zadaniu wartość dla highIcon ma pochodzić z wartości właściwości icon w obiekcie highTemperatures, jeżeli w obiekcie nie ma takiej wartości, ustaw ją dla highIcon domyślnie na string: "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg".
+
+// Zadeklarowano zmienną highTemperatures
+// Wartość zmiennej highTemperatures to obiekt
+// Zadeklarowano zmienną highYesterday
+// Wartość zmiennej highYesterday to liczba 28
+// Zadeklarowano zmienną highToday
+// Wartość zmiennej highToday to liczba 26
+// Zadeklarowano zmienną highTomorrow
+// Wartość zmiennej highTomorrow to liczba 33
+// Zadeklarowano zmienną highIcon
+// Wartość zmiennej highIcon to string "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg"
+// Używana jest destrukturyzacja obiektów
+
+// const highTemperatures = {
+//     yesterday: 28,
+//     today: 26,
+//     tomorrow: 33,
+//   };
+//   // Change code below this line
+
+//   //const highYesterday = highTemperatures.yesterday;
+//   //const highToday = highTemperatures.today;
+//   //const highTomorrow = highTemperatures.tomorrow;
+//   //const highIcon = highTemperatures.icon;
+//   const { yesterday: highYesterday, today: highToday, tomorrow: highTomorrow, icon: highIcon = "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg" } = highTemperatures;
+//   // Change code above this line
+//   const meanTemperature = (highYesterday + highToday + highTomorrow) / 3;
+
+// Ex 24
+
+// Podczas iteracji po tablicy obiektów z pętlą for...of otrzymujemy wiele identycznych wywołań obiektów z takimi samymi właściwościami.
+
+// const books = [
+//   {
+//     title: 'Ostatnie królestwo',
+//     author: 'Bernard Cornwell',
+//     rating: 8.38,
+//   },
+//   {
+//     title: 'Beside Still Waters',
+//     author: 'Robert Sheckley',
+//     rating: 8.51,
+//   },
+// ];
+
+// for (const book of books) {
+//   console.log(book.title);
+//   console.log(book.author);
+//   console.log(book.rating);
+// }
+// // Aby zmniejszyć liczbę powtórzeń, możesz dokonać destrukturyzacji właściwości obiektu do zmiennych lokalnych w ciele pętli.
+
+// for (const book of books) {
+//   const { title, author, rating } = book;
+
+//   console.log(title);
+//   console.log(author);
+//   console.log(rating);
+// }
+// // Jeśli obiekt ma niewiele właściwości i nie zaburzy to czytelności kodu, destrukturyzację można przeprowadzić bezpośrednio w miejscu, w którym była zadeklarowana zmienna book.
+
+// for (const { title, author, rating } of books) {
+//   console.log(title);
+//   console.log(author);
+//   console.log(rating);
+// }
+
+// Refaktoryzuj pętlę for...of, aby używała destrukturyzacji obiektu.
+
+// Zadeklarowano zmienną colors
+// Wartość zmiennej colors to tablica
+// Zadeklarowano zmienną hexColors
+// Wartość zmiennej hexColors to tablica ["#f44336", "#2196f3", "#4caf50", "#ffeb3b"]
+// Zadeklarowano zmienną rgbColors
+// Wartość zmiennej rgbColors to tablica ["244,67,54", "33,150,243", "76,175,80", "255,235,59"]
+// Aby iterować po tablicy, użyto pętli for...of
+// Destrukturyzacja obiektów jest używana w pętli for...of
+
+// const colors = [
+//     { hex: "#f44336", rgb: "244,67,54" },
+//     { hex: "#2196f3", rgb: "33,150,243" },
+//     { hex: "#4caf50", rgb: "76,175,80" },
+//     { hex: "#ffeb3b", rgb: "255,235,59" },
+//   ];
+
+//   const hexColors = [];
+//   const rgbColors = [];
+//   // Change code below this line
+
+//   for (const { hex, rgb } of colors) {
+//     hexColors.push(hex);
+//     rgbColors.push(rgb);
+//   }
+
+//Ex 25
+
+// Te same zasady jak w poprzednich ćwiczeniach używane są przy destrukturyzowaniu właściwości obiektów zagnieżdżonych.
+
+// const user = {
+//   name: "Jacques Gluke",
+//   tag: "jgluke",
+//   stats: {
+//     followers: 5603,
+//     views: 4827,
+//     likes: 1308,
+//   },
+// };
+
+// const {
+//   name,
+//   tag,
+//   stats: { followers, views: userViews, likes: userLikes = 0 },
+// } = user;
+
+// console.log(name); // Jacques Gluke
+// console.log(tag); // jgluke
+// console.log(followers); // 5603
+// console.log(userViews); // 4827
+// console.log(userLikes); // 1308
+
+// Otrzymaliśmy prognozę pogody na dwa dni, z minimalną i maksymalną temperaturą oraz opcjonalnymi ikonami. Zastąp wszystkie deklaracje zmiennych jedną operacją destrukturyzującą właściwości obiektu forecast. Ustaw domyślną wartość dla ikon, zmiennych todayIcon i tomorrowIcon - string "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg".
+
+// Zadeklarowano zmienną forecast
+// Wartość zmiennej forecast to obiekt
+// Zadeklarowano zmienną highToday przy użyciu destrukturyzacji
+// Wartość zmiennej highToday to liczba 32
+// Zadeklarowano zmienną lowToday przy użyciu destrukturyzacji
+// Wartość zmiennej lowToday to liczba 28
+// Zadeklarowano zmienną todayIcon przy użyciu destrukturyzacji
+// Wartość zmiennej todayIcon to string "https://www.flaticon.com/svg/static/icons/svg/861/861059.svg"
+// Zadeklarowano zmienną highTomorrow przy użyciu destrukturyzacji
+// Wartość zmiennej highTomorrow to liczba 31
+// Zadeklarowana zmienna lowTomorrow przy użyciu destrukturyzacji
+// Wartość zmiennej lowTomorrow to liczba 27
+// Zadeklarowano zmienną tomorrowIcon przy użyciu destrukturyzacji
+// Wartość zmiennej tomorrowIcon to ciąg "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg"
+// Używana jest składnia destrukturyzacji obiektu highTemperatures
+
+// const forecast = {
+//   today: {
+//     low: 28,
+//     high: 32,
+//     icon: 'https://www.flaticon.com/svg/static/icons/svg/861/861059.svg',
+//   },
+//   tomorrow: {
+//     low: 27,
+//     high: 31,
+//   },
+// };
+// // Change code below this line
+
+// //const highToday = forecast.today.high;
+// //const lowToday = forecast.today.low;
+// //const todayIcon = forecast.today.icon;
+
+// //const highTomorrow = forecast.tomorrow.high;
+// //const lowTomorrow = forecast.tomorrow.low;
+// //const tomorrowIcon = forecast.tomorrow.icon;
+
+// const {
+//   today: {
+//     high: highToday,
+//     low: lowToday,
+//     icon: todayIcon = 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg',
+//   },
+//   tomorrow: {
+//     high: highTomorrow,
+//     low: lowTomorrow,
+//     icon: tomorrowIcon = 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg',
+//   },
+// } = forecast;
+
+//Ex 26
+
+// Jeśli funkcja przyjmuje więcej niż jeden parametr, bardzo łatwo jest pomylić się co i w jakiej kolejności je przekazywać, zwłaszcza gdy wywołań funkcji jest wiele w różnych miejscach a jej parametry mają ustawione wartości domyślne. Rezultatem jest bardzo nieoczywisty kod w miejscu jego wywołania.
+
+// function doStuffWithBook(title, numberOfPages, downloads, rating, public) {
+//   // Robimy coś z parametrami
+//   console.log(title);
+//   console.log(numberOfPages);
+//   // Itd
+// }
+
+// // // ❌ Co to jest 736? Co to jest 10283? Co to jest true?
+// // doStuffWithBook("Ostatnie królestwo", 736, 10283, 8.38, true);
+// // Wzorzec «Obiekt ustawień» pomaga rozwiązać ten problem, zastępując zestaw parametrów tylko jednym — obiektem o nazwanych właściwościach - nie liczy się wtedy kolejność ich podania a jedynie ważne są klucze pod którymi znajdują się wartości.
+
+// function doStuffWithBook(book) {
+//   // Robimy coś z właściwościami obiektu
+//   console.log(book.title);
+//   console.log(book.numberOfPages);
+//   // Itd
+// }
+// Wtedy podczas wywołania przekazujemy jeden obiekt z niezbędnymi właściwościami.
+
+// ✅ Wszystko jasne
+// doStuffWithBook({
+//   title: 'Ostatnie królestwo',
+//   numberOfPages: 736,
+//   downloads: 10283,
+//   rating: 8.38,
+//   public: true,
+// });
+// // Kolejnym plusem jest to, że możesz zdestrukturyzować obiekt w parametrze book.
+
+// // Można to zrobić w ciele funkcji.
+// function doStuffWithBook(book) {
+//   const { title, numberOfPages, downloads, rating, public } = book;
+//   console.log(title);
+//   console.log(numberOfPages);
+//   // Itd
+// }
+
+// // Lub w deklaracji, zależy to jedynie od przyjętej konwencji oba sposoby są w porządku.
+// function doStuffWithBook({ title, numberOfPages, downloads, rating, public }) {
+//   console.log(title);
+//   console.log(numberOfPages);
+//   // Itd
+// }
+
+// Funkcja calculateMeanTemperature(forecast) przyjmuje jeden parametr forecast - obiekt temperatury na dwa dni następnego formatu.
+
+// {
+//   today: { low: 10, high: 20 },
+//   tomorrow: { low: 20, high: 30 }
+// }
+// Zastąp deklaracje zmiennych todayLow, todayHigh, tomorrowLow i tomorrowHigh jedną operacją destrukturyzacji właściwości obiektu forecast.
+
+// Zadeklarowana jest funkcja calculateMeanTemperature(forecast)
+// Ciało funkcji wykorzystuje destrukturyzację obiektu
+// Zmienna todayHigh jest deklarowana w ciele funkcji za pomocą destrukturyzacji
+// Zmienna todayLow jest deklarowana w ciele funkcji za pomocą destrukturyzacji
+// Zmienna tomorrowLow jest deklarowana w ciele funkcji za pomocą destrukturyzacji
+// Zmienna tomorrowHigh jest deklarowana w ciele funkcji za pomocą destrukturyzacji
+// Wywołanie calculateMeanTemperature({ today: {low: 28, high: 32}, tomorrow: {low: 25, high: 29} }) zwraca 28.5
+// Wywołanie calculateMeanTemperature({ today: {low: 37, high: 40}, tomorrow: {low: 33, high: 38} }) zwraca 37
+
+// Change code below this line
+//function calculateMeanTemperature(forecast) {
+//const todayLow = forecast.today.low;
+//const todayHigh = forecast.today.high;
+//const tomorrowLow = forecast.tomorrow.low;
+//const tomorrowHigh = forecast.tomorrow.high;
+
+// Change code above this line
+//return (todayLow + todayHigh + tomorrowLow + tomorrowHigh) / 4;
+//}
+
+// // Change code below this line
+// function calculateMeanTemperature(forecast) {
+//   const {
+//     today: { low: todayLow, high: todayHigh },
+//     tomorrow: { low: tomorrowLow, high: tomorrowHigh },
+//   } = forecast;
+
+//   // Change code above this line
+//   return (todayLow + todayHigh + tomorrowLow + tomorrowHigh) / 4;
+// }
+
+//EX 27 ...SPREAD
+
+// Składnia ... (spread) umożliwia "rozkładanie" kolekcji elementów (tablicy, ciągu lub obiektu) w miejscu, w którym oczekiwany jest ciąg różnych wartości. Oczywiście istnieją pewne ograniczenia, na przykład nie można "rozłożyć" tablicy do obiektu i odwrotnie.
+
+// Możemy użyć analogii z pudełkiem jabłek. Kładąc pudełko na podłodze bez wyjmowania z niego jabłek, otrzymujemy analog tablicy wartości. Jeśli wysypać jabłka z pudełka na podłogę, następuje "rozkładanie" - zestaw oddzielnych wartości. Każde jabłko staje się w danym miejscu osobną wartością która może zostać wykorzystana.
+
+// Jest tylko jedna różnica - w JavaScript "rozkładanie" nie zmienia oryginalnej kolekcji, czyli tworzy (shallow copy) płytką kopię każdego elementu. Po "rozkładaniu" na podłodze będzie pudełko pełne jabłek i kopia każdego jabłka.
+
+// Na przykład metoda Math.max(arguments) wyszukuje i zwraca największy z podanych argumentów (liczb), co oznacza, że ​​nie oczekuje tablicy wartości, ale dowolnej liczby argumentów.
+
+// const temps = [14, -4, 25, 8, 11];
+
+// Konsola wyświetli tablicę a nie wszystko elementy pojedynczo
+// console.log(temps);
+// ❌ To nie zadziała, ponieważ przekazujemy całą tablicę a nie poszczególne jej elementy jako poszczególne argumenty
+// console.log(Math.max(temps)); // NaN
+
+// Konsola wyświetli po kolei liczby z tablicy
+// console.log(...temps);
+// ✅ Rozłóżmy kolekcję elementów jako oddzielne argumenty
+// console.log(Math.max(...temps)); // 25
+// Czyli wpis Math.max(...[14, -4, 25, 8, 11]) po interpretacji zamienia się w Math.max(14, -4, 25, 8, 11) - składnia ... zwraca rozpakowaną tablicę, czyli rozkłada jej elementy jako oddzielne argumenty.
+
+// Zmienna scores przechowuje tablicę wyników testów. Używając operatora spread i metod Math.max() i Math.min(), uzupełnij kod tak, aby do zmiennej bestScore przypisany został najwyższy wynik, natomiast do worstScore najniższy.
+
+// Zadeklarowano zmienną scores
+// Wartość zmiennej scores to tablica [89, 64, 42, 17, 93, 51, 26]
+// Zadeklarowano zmienną bestScore
+// Wartość zmiennej bestScore to liczba 93
+// Zadeklarowano zmienną worstScore
+// Wartość zmiennej worstScore to liczba 17
+// Do przekazywania argumentów do metody Math.max() używany jest operator spread ... w tablicy scores
+// Do przekazywania argumentów do metody Math.min() używany jest operator spread ... w tablicy scores
+
+// const scores = [89, 64, 42, 17, 93, 51, 26];
+// const bestScore = Math.max(...scores);
+// const worstScore = Math.min(...scores);
+// console.log(worstScore);
+
+//Ex 28
+
+// Operacja spread pozwala na utworzenie płytkiej kopii tablicy lub "sklejenie" dowolnej liczby tablic w jedną nową. Wcześniej używano do tego metod slice() i concat(), ale operacja rozkładania pozwala zrobić to samo w bardziej skróconej i czytelnej formie.
+
+// const temps = [14, -4, 25, 8, 11];
+
+// // To jest dokładna, ale niezależna płytka kopia tablicy temps
+// const copyOfTemps = [...temps];
+// console.log(copyOfTemps); // [14, -4, 25, 8, 11]
+// // W powyższym przykładzie mamy pudełko jabłek temps i chcemy zrobić jego dokładną kopię. Bierzemy puste pudełko i wsypujemy do niego jabłka z oryginalnego pudełka temps - rozkładamy je do innej kolekcji. W tym przypadku pudełko temps nie zmieni się, nadal będzie zawierało jabłka, a nowe pudełko będzie zawierało ich dokładne kopie.
+
+// // W poniższym przykładzie wsypujemy jabłka z dwóch pudełek do jednego nowego. Oryginalne pudełka (tablice) nie ulegną zmianie, ale nowe będą zawierały kopie wszystkich ich jabłek (elementów). Kolejność rozkładania jest ważna - wpływa na kolejność elementów w nowej tablicy.
+
+// const lastWeekTemps = [14, 25, 11];
+// const currentWeekTemps = [23, 17, 18];
+// const allTemps = [...lastWeekTemps, ...currentWeekTemps];
+// console.log(allTemps); // [14, 25, 11, 23, 17, 18]
+
+// W zmiennych firstGroupScores, secondGroupScores i thirdGroupScores przechowywane są wyniki testów poszczególnych grup. Używając rozkładania, uzupełnij kod tak, aby:
+
+// Zmienna allScores przechowywała tablicę wszystkich wyników od pierwszej do trzeciej grupy.
+// Zmienna bestScore miała najwyższy ogólny wynik.
+// Zmienna worstScore miała najniższy ogólny wynik.
+// Zadeklarowano zmienną firstGroupScores
+// Wartością zmiennej firstGroupScores jest tablica [64, 42, 93]
+// Zadeklarowano zmienną secondGroupScores
+// Wartością zmiennej secondGroupScores jest tablica [89, 14, 51, 26]
+// Zadeklarowano zmienną thirdGroupScores
+// Wartością zmiennej thirdGroupScores jest tablica [29, 47, 18, 97, 81]
+// Zadeklarowano zmienną allScores.
+// Wartością zmiennej allScores jest tablica [64, 42, 93, 89, 14, 51, 26, 29, 47, 18, 97, 81]
+// Zadeklarowano zmienną bestScore
+// Wartością zmiennej bestScore jest liczba 97
+// Zadeklarowano zmienną worstScore
+// Wartością zmiennej worstScore jest liczba 14
+// Podczas przypisywania wartości do zmiennej allScores do wypełnienia tablicy użyto operatora spread ...
+// Aby przekazać argumenty do metody Math.max() używany jest operator spread ... natablicy allScores
+// Aby przekazać argumenty do metody Math.min() używany jest operator spread ... na tablicy allScores
+
+// const firstGroupScores = [64, 42, 93];
+// const secondGroupScores = [89, 14, 51, 26];
+// const thirdGroupScores = [29, 47, 18, 97, 81];
+
+// const allScores = [
+//   ...firstGroupScores,
+//   ...secondGroupScores,
+//   ...thirdGroupScores,
+// ];
+// const bestScore = Math.max(...allScores);
+// const worstScore = Math.min(...allScores);
+
+//Ex 29
+
+// Operacja spread pozwala na rozkładanie właściwości dowolnej liczby obiektów w jeden nowy.
+
+// const first = { propA: 5, propB: 10 };
+// const second = { propC: 15 };
+// const third = { ...first, ...second };
+// console.log(third); // { propA: 5, propB: 10, propC: 15 }
+// Kolejność rozkładania ma znaczenie. Nazwy właściwości obiektu są niepowtarzalne, więc właściwości rozkładanego obiektu mogą nadpisać wartość istniejącej właściwości, jeśli ich nazwy są takie same.
+
+// const first = { propA: 5, propB: 10, propC: 50 };
+// const second = { propC: 15, propD: 20 };
+
+// const third = { ...first, ...second };
+// console.log(third); // { propA: 5, propB: 10, propC: 15, propD: 20 }
+
+// const fourth = { ...second, ...first };
+// console.log(fourth); // { propA: 5, propB: 10, propC: 50, propD: 20 }
+
+// Gdyby jabłka w pudełku miały etykiety, to w jednym pudełku nie mogłyby znajdować się dwa jabłka z tymi samymi etykietami. Dlatego podczas "wysypania" drugiego pudełka wszystkie jabłka, których etykiety pokrywają się z tymi, które są już w nowym, zastąpią tamte, które już są.
+
+// Podczas rozkładania możesz dodać właściwości do dowolnego miejsca. Najważniejszą rzeczą do zapamiętania jest to, że nazwa właściwości jest unikalna i że jej wartość można nadpisać.
+
+// const first = { propA: 5, propB: 10, propC: 50 };
+// const second = { propC: 15 };
+
+// const third = { propB: 20, ...first, ...second };
+// console.log(third); // { propA: 5, propB: 10, propC: 15 }
+
+// const fourth = { ...first, ...second, propB: 20 };
+// console.log(fourth); // { propA: 5, propB: 20, propC: 15 }
+
+// const fifth = { ...first, propB: 20, ...second };
+// console.log(fifth); // { propA: 5, propB: 20, propC: 15 }
+
+// W konstruktorze można tworzyć nowe testy, których domyślne ustawienia są przechowywane w zmiennej defaultSettings. Podczas tworzenia testu wszystkie lub część ustawień można nadpisać, są one przechowywane w zmiennej overrideSettings.
+
+// Aby uzyskać ostateczne ustawienia testu, musisz wybrać ustawienia domyślne i zastosować na nich nadpisane ustawienia. Uzupełnij kod w ten sposób, aby zmienna finalSettings zawierała obiekt ostatecznych ustawień testu.
+
+// Zadeklarowano zmienną defaultSettings
+// Wartość zmiennej defaultSettings to obiekt
+// Zadeklarowano zmienną overrideSettings
+// Wartość zmiennej overrideSettings to obiekt
+// Zadeklarowano zmienną finalSettings
+// Wartość zmiennej finalSettings to obiekt
+// Wartość właściwości finalSettings.theme to "light"
+// Wartość właściwości finalSettings.public to "false"
+// Wartość właściwości finalSettings.withPassword to "true"
+// Wartość właściwości finalSettings.minNumberOfQuestions to 10
+// Wartość właściwości finalSettings.timePerQuestion to 30
+// Podczas przypisywania wartości zmiennej finalSettings używana jest składnia ...
+
+// const defaultSettings = {
+//   theme: 'light',
+//   public: true,
+//   withPassword: false,
+//   minNumberOfQuestions: 10,
+//   timePerQuestion: 60,
+// };
+// const overrideSettings = {
+//   public: false,
+//   withPassword: true,
+//   timePerQuestion: 30,
+// };
+// const finalSettings = { ...defaultSettings, ...overrideSettings };
+// console.log(finalSettings);
+
+//Ex 30 KARTY ZADAŃ
+
+// Napisz funkcję makeTask(data), która przyjmuje jeden parametr data - obiekt o następujących właściwościach:
+
+// text - tekst zadania.
+// category - kategoria zadania.
+// priority - priorytet zadania.
+// Funkcja powinna utworzyć i zwrócić nowy obiekt zadania bez bezpośredniej modyfikacji parametru data. Nowy obiekt musi mieć właściwość completed, której wartość jest przechowywana w zmiennej lokalnej o tej samej nazwie.
+
+// W parametrze data jest gwarantowana tylko właściwość text, i może brakować pozostałych dwóch category i priority. Wtedy w nowym obiekcie zadania właściwości category i priority powinny zawierać wartości domyślne przechowywane w zmiennych lokalnych o tej samej nazwie.
+
+// Zadeklarowano funkcję makeTask(data)
+// Wywołanie makeTask({}) zwraca { category: "General", priority: "Normal", completed: false }
+// Wywołanie makeTask({ category: "Homemade", priority: "Low", text: "Take out the trash" }) zwraca { category: "Homemade", priority: "Low", text: "Take out the trash", completed: false }
+// Wywołanie makeTask({ category: "Finance", text: "Take interest" }) zwraca { category: "Finance", priority: "Normal", text: "Take interest", completed: false }
+// Wywołanie makeTask({ priority: "Low", text: "Choose shampoo" }) zwraca { category: "General", priority: "Low", text: "Choose shampoo", completed: false }
+// Wywołanie makeTask({ text: "Buy bread" }) zwraca { category: "General", priority: "Normal", text: "Buy bread", completed: false }
+// function makeTask(data) {
+//   const completed = false;
+//   const category = 'General';
+//   const priority = 'Normal';
+//   // Change code below this line
+//   const task = {
+//     category: data.category || category,
+//     priority: data.priority || priority,
+//     text: data.text,
+//     completed: completed,
+//   };
+//   return task;
+//   // Change code above this line
+// }
+
+//Ex 31  ...REST
+
+// Operacja ... (rest) umożliwia zebranie grupy niezależnych elementów do nowej kolekcji. Syntaktycznie jest to bliźniak operacji rozkładania, ale łatwo je rozróżnić - spread/rozkładanie następuje, gdy ... znajduje się po prawej stronie operacji przypisania, a rest/zbiór ma miejsce, gdy ... znajduje się po lewej stronie.
+
+// Wróćmy do analogii z jabłkami. Jeśli na podłodze są jabłka i mamy puste pudełko, to operacja rest pozwoli nam „zbierać” jabłka do pudełka. W takim przypadku oryginalne jabłka pozostaną na podłodze, a w pudełku będzie kopia każdego jabłka.
+
+// Najczęstszym z zastosowaniem operacji rest jest tworzenie funkcji, które mogą przyjmować dowolną liczbę argumentów.
+
+// Jak zadeklarować parametry funkcji tak,
+// aby można było przekazać dowolną liczbę argumentów?
+// function multiply() {
+//   // ...
+// }
+
+// multiply(1, 2);
+// multiply(1, 2, 3);
+// multiply(1, 2, 3, 4);
+// // Jeśli usuniemy cały „szum składni” i spojrzymy na argumenty i parametry funkcji, to argumenty znajdują się po prawej stronie operacji przypisania, a parametry po lewej, ponieważ wartości argumentów są przypisane do zadeklarowanego parametru. Możesz więc "zbierać" wszystkie argumenty funkcji w jeden parametr za pomocą operacji rest.
+
+// function multiply(...args) {
+//   console.log(args); // tablica wszystkich argumentów
+// }
+
+// multiply(1, 2);
+// multiply(1, 2, 3);
+// multiply(1, 2, 3, 4);
+// // Nazwa parametru może być dowolna. Najczęściej nazywa się to args, restArgs lub otherArgs, co jest skrótem od arguments.
+
+// Korzystając z operacji rest, uzupełnij kod funkcji add(), aby przyjmowała dowolną liczbę argumentów, odczytywała i zwracała ich sumę.
+
+// Zadeklarowano funkcję add
+// Funkcja add używa parametru args
+// Aby zebrać argumenty do zmiennej args, w podpisie funkcji używa się składni ... (operator rest)
+// Wywołanie add(15, 27) zwraca 42
+// Wywołanie add(12, 4, 11, 48) zwraca 75
+// Wywołanie add(32, 6, 13, 19, 8) zwraca 78
+// Wywołanie add(74, 11, 62, 46, 12, 36) zwraca 241
+
+// function add(...args) {
+//     return args.reduce((sum, num) => sum + num, 0);
+//   }
+
+//Ex 32
+
+// Operacja ... (rest) umożliwia również zbieranie do tablicy tylko tej części argumentów, która jest potrzebna poprzez zadeklarowanie parametrów przed „zbiorem”.
+
+// function multiply(firstNumber, secondNumber, ...otherArgs) {
+//   console.log(firstNumber); // Wartość pierwszego argumentu
+//   console.log(secondNumber); // Wartość drugiego argumentu
+//   console.log(otherArgs); // Tablica pozostałych argumentów
+// }
+
+// multiply(1, 2);
+// multiply(1, 2, 3);
+// multiply(1, 2, 3, 4);
+// Wszystkie argumenty, dla których zostaną zadeklarowane parametry przekażą im swoje wartości, reszta argumentów zostanie umieszczona w tablicy. Operacja rest zbiera wszystkie pozostałe argumenty i dlatego musi znajdować się na końcu w sygnaturze funkcji, w przeciwnym razie wyrzucony zostanie błąd.
+
+// Funkcja addOverNum() oblicza sumę wszystkich argumentów. Zmień parametry i ciało funkcji addOverNum() tak, aby obliczała tylko sumę tych argumentów, które są większe niż określona liczba. Ta liczba musi być pierwszym parametrem funkcji.
+
+// Zadeklarowano funkcję addOverNum()
+// Wywołanie addOverNum(50, 15, 27) zwraca 0
+// Wywołanie addOverNum(10, 12, 4, 11, 48, 10, 8) zwraca 71
+// Wywołanie addOverNum(15, 32, 6, 13, 19, 8) zwraca 51
+// Wywołanie addOverNum(20, 74, 11, 62, 46, 12, 36) zwraca 218
+
+// function addOverNum(num, ...args) {
+//   let total = 0;
+//   for (const arg of args) {
+//     if (arg > num) {
+//       total += arg;
+//     }
+//   }
+//   return total;
+// }
+// console.log(addOverNum(20, 74, 11, 62, 46, 12, 36));
+
+//Ex 33 TABLICA DOPASOWAŃ
+
+// Funkcja findMatches() powinna przyjmować dowolną liczbę argumentów. Pierwszy argument zawsze będzie tablicą liczb, a pozostałe argumenty będą pojedynczymi liczbami.
+
+// Uzupełnij kod funkcji, aby zwracała nową tablicę matches, która będzie zawierać tylko te argumenty, zaczynając od drugiego, które znajdują się w tablicy pierwszego argumentu.
+
+// Na przykład findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7) powinno zwrócić tablicę [1, 2], ponieważ tylko one znajdują się w tablicy którą podajemy jako pierwszy argument.
+
+// Zadeklarowano funkcję findMatches()
+// Wywołanie findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7) zwraca [1, 2]
+// Wywołanie findMatches([4, 89, 17, 36, 2], 8, 17, 89, 27, 2) zwraca [17, 89, 2]
+// Wywołanie findMatches([10, 24, 41, 6, 9, 19], 24, 11, 9, 23, 41) zwraca [24, 9, 41]
+// Wywołanie findMatches([63, 11, 8, 29], 4, 7, 16) zwraca []
+
+// Change code below this line
+//function findMatches() {
+// const matches = []; // Don't change this line
+
+// Change code above this line
+// return matches;
+//}
+
+// function findMatches(arr, ...args) {
+//   const matches = args.filter((arg) => arr.includes(arg));
+//   return matches;
+// }
+// console.log(findMatches([4, 89, 17, 36, 2], 8, 17, 89, 27, 2));
+
+// Oto poprawiona wersja funkcji findMatches() wykorzystująca ...rest:
+
+// javascript
+// Copy code
+// function findMatches(arr, ...rest) {
+//   const matches = [];
+
+//   for (const numToFind of rest) {
+//     if (arr.includes(numToFind)) {
+//       matches.push(numToFind);
+//     }
+//   }
+
+//   return matches;
+// }
+// W tej wersji funkcji findMatches() pierwszy argument arr jest normalnym argumentem, a ...rest to operator rest, który przechwytuje wszystkie pozostałe argumenty jako tablicę. Teraz możemy bezpośrednio iterować po tablicy rest, sprawdzając, czy każda z tych pojedynczych liczb znajduje się w tablicy arr za pomocą metody includes(). Jeśli tak, to dodajemy ją do tablicy matches. Po przejściu przez wszystkie argumenty zwracamy tablicę matches, która zawiera tylko te liczby, które znajdują się w tablicy przekazanej jako pierwszy argument.
+
+// Możemy również użyć operatora ...spread (spread syntax) do rozpakowania pozostałych argumentów w wywołaniu funkcji. W takim przypadku wywołanie funkcji będzie wyglądać następująco:
+
+// javascript
+// Copy code
+// const arr = [1, 2, 3, 4, 5];
+// const result = findMatches(arr, ...[1, 8, 2, 7]);
+// console.log(result); // Output: [1, 2]
+// Operator ...[1, 8, 2, 7] rozpakowuje tablicę i przekazuje jej elementy jako pojedyncze argumenty do funkcji findMatches(). Funkcja będzie działała w taki sam sposób, jak wcześniej.
+
+//Ex 34
+
+// Do tej pory traktowaliśmy obiekty tylko jako magazyny powiązanych ze sobą danych, na przykład informacji o książce itp. Obiekty używane jako tego typu "pamięć" zwykle znajdują się w tablicy tych samych obiektów, która reprezentuje kolekcję podobnych elementów.
+
+// Obiekty mogą przechowywać nie tylko dane, ale także funkcje do pracy z tymi danymi - metody. Jeśli wartością właściwości jest funkcja, właściwość ta nazywana jest metodą obiektu.
+
+// // ✅ Logiczne i syntaktycznie pogrupowane encje
+// const bookShelf = {
+//   books: ['Ostatnie królestwo', 'Strażnicy snów'],
+//   // To jest metoda obiektu
+//   getBooks() {
+//     console.log('Ta metoda zwróci wszystkie książki - właściwość books');
+//   },
+//   // To jest metoda obiektu
+//   addBook(bookName) {
+//     console.log('Ta metoda doda nową książkę do właściwości books');
+//   },
+// };
+
+// // Wywołania metod
+// bookShelf.getBooks();
+// bookShelf.addBook('Nowa książka');
+// // Takie obiekty można nazwać „modelami”. Wiążą one dane i metody do pracy z tymi danymi. Na przykład, można zadeklarować zmienną books i dwie funkcje getBooks() i addBook(bookName), ale wtedy byłyby trzema niezależnymi jednostkami bez wyraźnej składni i ze słabym połączeniem logicznym.
+
+// // ❌ Luźno powiązane, niezależne encje
+// const books = [];
+// function getBooks() {}
+// function addBook() {}
+
+// Dodaj dwie dodatkowe metody do obiektu bookShelf, które na razie będą zwracały tylko stringi przez analogię do getBooks() i addBook(bookName).
+
+// Metoda removeBook(bookName) usunie książkę według tytułu. Zwraca string "Deleting book <tytuł książki>", gdzie <tytuł ksiązki> jest wartością parametru bookName.
+
+// Metoda updateBook(oldName, newName) zaktualizuje tytuł książki. Zwraca string "Updating book <stary tytuł> to <nowy tytuł>", gdzie <stary tytuł> i <nowy tytuł> są wartościami parametrów oldName i newName odpowiednio.
+
+// Zadeklarowano zmienną bookShelf
+
+// Wartością zmiennej bookShelf jest obiekt
+
+// Wartością właściwości bookShelf.getBooks jest metoda obiektu
+
+// Wywołanie metody bookShelf.getBooks() zwraca ciąg "Returning all books"
+
+// Wartością właściwości bookShelf.addBook jest metoda obiektu
+
+// Wywołanie metody bookShelf.addBook("Haze") zwraca ciąg "Adding book Haze"
+
+// Wartością właściwości bookShelf.removeBook jest metoda obiektu
+
+// Wywołanie metody bookShelf.removeBook("Red sunset") zwraca ciąg "Deleting book Red sunset"
+
+// Wartością właściwości bookShelf.updateBook jest metoda obiektu
+
+// Wywołanie metody bookShelf.updateBook("Sands of dune", "Dune") zwraca ciąg "Updating book Sands of dune to Dune"
+
+// const bookShelf = {
+//   books: ['The last kingdom', 'The guardian of dreams'],
+//   getBooks() {
+//     return 'Returning all books';
+//   },
+//   addBook(bookName) {
+//     return `Adding book ${bookName}`;
+//   },
+//   removeBook(bookName) {
+//     const index = this.books.indexOf(bookName);
+//     if (index === -1) {
+//       this.books.splice(index, 1);
+//       return `Deleting book ${bookName}`;
+//     } else {
+//       return `Book ${bookName} not found`;
+//     }
+//   },
+//   updateBook(oldName, newName) {
+//     const index = this.books.indexOf(oldName);
+//     if (index === -1) {
+//       this.books[index] = newName;
+//       return `Updating book ${oldName} to ${newName}`;
+//     } else {
+//       return `Book ${oldName} not found`;
+//     }
+//   },
+// };
+// console.log(bookShelf.removeBook('Red sunset'));
+
+// const bookShelf = {
+//   books: ['The last kingdom', 'The guardian of dreams'],
+//   getBooks() {
+//     return 'Returning all books';
+//   },
+//   addBook(bookName) {
+//     return `Adding book ${bookName}`;
+//   },
+//   removeBook(bookName, ...rest) {
+//     const bookIndex = this.books.indexOf(bookName);
+//     if (bookIndex !== -1) {
+//       this.books.splice(bookIndex, 1);
+//       return `Deleting book ${bookName}`;
+//     } else {
+//       return `Book ${bookName} not found`;
+//     }
+//   },
+//   updateBook(oldName, newName, ...rest) {
+//     const bookIndex = this.books.indexOf(oldName);
+//     if (bookIndex !== -1) {
+//       this.books[bookIndex] = newName;
+//       return `Updating book ${oldName} to ${newName}`;
+//     } else {
+//       return `Book ${oldName} not found`;
+//     }
+//   },
+// };
+// console.log(bookShelf.removeBook('Red sunset'));
+
+// Ex 35
+
+// Metody służą do pracy z właściwościami obiektów i ich zmiany. Aby uzyskać dostęp do obiektu, metoda nie używa nazwy zmiennej, na przykład bookShelf, ale słowa kluczowego this - oznaczającego tutaj kontekst. Wartością this będzie obiekt przed punktem (kropką), czyli obiekt, który wywołał tę metodę, w naszym przypadku jest to link do obiektu bookShelf.
+
+// const bookShelf = {
+//   books: ['Ostatnie Królestwo'],
+//   getBooks() {
+//     console.log(this);
+//   },
+// };
+
+// Kropka jest poprzedzona obiektem bookShelf,
+// więc kiedy metoda jest wywoływana, this będzie przechowywać link do niego.
+//bookShelf.getBooks(); // {books: ["Ostatnie Królestwo"], getBooks: f}
+// Aby uzyskać dostęp do właściwości obiektu w metodach, odwołujemy się do niego przez this, a następnie, jak zwykle, przez kropkę, do właściwości.
+
+// const bookShelf = {
+//   books: ['Ostatnie Królestwo'],
+//   getBooks() {
+//     return this.books;
+//   },
+//   addBook(bookName) {
+//     this.books.push(bookName);
+//   },
+//   removeBook(bookName) {
+//     const bookIndex = this.books.indexOf(bookName);
+//     this.books.splice(bookIndex, 1);
+//   },
+// };
+
+// console.log(bookShelf.getBooks()); // ["Ostatnie Królestwo"]
+// bookShelf.addBook('Mgła');
+// bookShelf.addBook('Strażnicy snów');
+// console.log(bookShelf.getBooks()); // ["Ostatnie Królestwo", "Mgła", "Strażnicy snów"]
+// bookShelf.removeBook('Mgła');
+// console.log(bookShelf.getBooks()); // ["Ostatnie Królestwo", "Strażnicy snów"]
+
+// Logicznie byłoby myśleć - dlaczego nie użyć nazwy obiektu podczas odwoływania się do właściwości, ponieważ wyraźnie nie zamierzamy jej zmieniać. Chodzi o to, że nazwa obiektu oże nie być jednoznaczna i "wiarygodna", metody jednego obiektu można skopiować do innego (o innej nazwie), a w przyszłości przekonamy się, że często tworząc obiekt, w ogóle nie znamy nazwy z góry. Użycie this zapewnia, że ​​metoda działa dokładnie na obiekcie, który ją wywołał.
+
+// Uzupełnij metodę updateBook(oldName, newName) tak, aby zmieniała tytuł książki z oldName na newName we właściwości books. Użyj indexOf(), aby znaleźć żądany element tablicy, i splice(), aby zastąpić ten element.
+
+// Zadeklarowana zmienna bookShelf
+
+// Wartością zmiennej bookShelf jest obiekt
+
+// Wartością właściwości bookShelf.updateBook jest metoda obiektu
+
+// Po wywołaniu metody bookShelf.updateBook("Haze", "Dungeon chronicles"), wartością właściwości books jest tablica ["The last kingdom", "Dungeon chronicles", "The guardian of dreams"]
+
+// Po wywołaniu metody bookShelf.updateBook("The last kingdom", "Dune"), wartością właściwości books jest tablica ["Dune", "Haze", "The guardian of dreams"]
+
+// const bookShelf = {
+//     books: ["The last kingdom", "Haze", "The guardian of dreams"],
+//     updateBook(oldName, newName) {
+//       // Change code below this line
+//   const index = this.books.indexOf(oldName);
+//       if (index !==-1){
+//         this.books.splice(index, 1, newName);
+//       }
+
+//       // Change code above this line
+//     },
+//   };
+
+// Ex 36  SKLEP Z ELIKSIRAMI „U STAREJ ROPUCHY”
+
+// Zwrócił się do nas właściciel sklepu z eliksirami "U Starej Ropuchy" i zamówił program do prowadzenia inwentarza - dodawania, usuwania, wyszukiwania i aktualizacji mikstur. W tym zadaniu na razie dodaj tylko do obiektu atTheOldToad właściwość potions, której wartość jest pustą tablicą.
+
+// Zadeklarowano zmienną atTheOldToad
+// Wartością zmiennej atTheOldToad jest obiekt
+// Wartością właściwości atTheOldToad.potions jest tablica []
+
+// const atTheOldToad = {
+//     options: [],
+// }
+
+// Ex 37 OTRZYMUJEMY WSZYSTKIE MIKSTURY
+
+// Dodaj do obiektu atTheOldToad metodę getPotions(), która po prostu zwraca wartość wartość właściwości potions.
+
+// Zadeklarowano zmienną atTheOldToad
+// Wartością zmiennej atTheOldToad jest obiekt
+// Wartością właściwości atTheOldToad.potions jest tablica ["Speed potion", "Dragon breath", "Stone skin"]
+// Wartością właściwości atTheOldToad.getPotions jest metoda obiektu
+// Wywołanie metody atTheOldToad.getPotions() zwraca ["Speed potion", "Dragon breath", "Stone skin"]
+
+// const atTheOldToad = {
+//   options: ['Speed potion', 'Dragon breath', 'Stone skin'],
+//   getOptions()
+//   {
+//     return this.options; //--------------MATODA
+//   },
+// };
+// console.log(atTheOldToad.getOptions());
+
+// Ex 38 DODAJ NOWĄ MIKSTURĘ
+
+// Uzupełnij metodę addPotion(potionName), aby dodawała miksturę potionName na końcu tablicy mikstur we właściwości potions.
+
+// Zadeklarowano zmienną atTheOldToad
+// Wartość zmiennej atTheOldToad to obiekt
+// Wartość właściwości atTheOldToad.potions to tablica ["Speed potion", "Dragon breath", "Stone skin"]
+// Wartość właściwości atTheOldToad.addPotion to metoda obiektu
+// Po pierwszym wywołaniu metody atTheOldToad.addPotion("Invisibility"), właściwość potions będzie zawierać tablicę ["Speed potion", "Dragon breath", "Stone skin", "Invisibility"]
+// Po drugim wywołaniu metody atTheOldToad.addPotion("Power potion"), właściwość potions będzie zawierać tablicę ["Speed potion", "Dragon breath", "Stone skin", "Invisibility", "Power potion"]
+
+// const atTheOldToad = {
+//   options: ['Speed potion', 'Dragon breath', 'Stone skin'],
+//   addOption(optionName) {
+//     this.options.push(optionName);
+//   },
+// };
+
+// Ex 39 USUŃ MIKSTURĘ
+
+// Uzupełnij metodę removePotion(potionName) aby usuwała miksturę potionName z tablicy mikstur we właściwości potions przy użyciu indexOf i splice.
+
+// Zadeklarowana zmienna atTheOldToad
+// Wartość zmiennej atTheOldToad to obiekt
+// Wartość właściwości atTheOldToad.potions to tablica ["Speed potion", "Dragon breath", "Stone skin"]
+// Wartość właściwości atTheOldToad.removePotion to metoda obiektu
+// Po pierwszym wywołaniu metody atTheOldToad.removePotion("Dragon breath"), właściwość potions będzie zawierać tablicę ["Speed potion", Stone skin"]
+// Po drugim wywołaniu metody atTheOldToad.removePotion("Speed potion"), właściwość potions będzie zawierać tablicę ["Stone skin"]
+
+// const atTheOldToad = {
+//   potions: ['Speed potion', 'Dragon breath', 'Stone skin'],
+//   removePotion(potionName) {
+//     const potionIndex = this.potions.indexOf(potionName);
+//     if (potionIndex !== -1) {
+//       this.potions.splice(potionIndex, 1);
+//     }
+//   },
+// };
+
+// // Testy
+// atTheOldToad.removePotion('Dragon breath');
+// console.log(atTheOldToad.potions); // Output: ["Speed potion", "Stone skin"]
+
+// atTheOldToad.removePotion('Speed potion');
+// console.log(atTheOldToad.potions); // Output: ["Stone skin"]
+
+// Ex 40  ZAKTUALIZUJ MIKSTURĘ
+
+// Uzupełnij metodę updatePotionName(oldName, newName) tak, aby zmieniała nazwę mikstury z oldName do newName, w tablicy mikstur we właściwości potions.
+
+// Zadeklarowano zmienną atTheOldToad
+// Wartość zmiennej atTheOldToad to obiekt
+// Wartość właściwości atTheOldToad.potions to tablica ["Speed potion", "Dragon breath", "Stone skin"]
+// Wartość właściwości atTheOldToad.updatePotionName to metoda obiektu
+// Po pierwszym wywołaniu metody atTheOldToad.updatePotionName("Dragon breath", "Polymorth"), właściwość potions będzie zawierać tablicę ["Speed potion", "Polymorth", "Stone skin"]
+// Po drugim wywołaniu metody atTheOldToad.updatePotionName("Stone skin", "Invisibility"), właściwość potions będzie zawierać tablicę ["Speed potion", "Polymorth", "Invisibility"]
+
+// const atTheOldToad = {
+//   potions: ['Speed potion', 'Dragon breath', 'Stone skin'],
+//   updatePotionName(oldName, newName) {
+//     // Change code below this line
+//     const index = this.potions.indexOf(oldName);
+//     if (index !== -1) {
+//       this.potions[index] = newName;
+//     }
+//     return this.potions; //-----MUSIMY zwrocic tablice DEBILU!!!!!!!!!!!!!!!!!
+//     // Change code above this line
+//   },
+// };
+// console.log(atTheOldToad.updatePotionName('Stone skin', 'Invisibility'));
+
+// Ex 41  POWIĘKSZANIE INWENTARZA
+
+// Klient chce, aby dla każdej mikstury była zapisana nie tylko nazwa, ale także cena. W przyszłości każda mikstura może mieć również inne cechy. Musimy zamienić prostą tablicę stringów potions na poniższą strukturę tablicy obiektów.
+
+// {
+//   name: "Dragon breath",
+//   price: 700
+// }
+// Refaktoryzuj metody obiektu atTheOldToad aby działały gdy w tablicy potions znajdują się obiekty a nie stringi.
+
+// getPotions() - metoda na zdobycie wszystkich mikstur. Zwraca wartość właściwości potions.
+// addPotion(newPotion) - metoda dodaje obiekt newPotion do tablicy potions, pod warunkiem, że nie istnieje w niej już obiekt o takiej samej właściwości name jak w newPotion. Jeżeli taka mikstura już istnieje, zwracamy string Error! Potion ${newPotion.name} is already in your inventory!
+// removePotion(potionName) - usuwa obiekt mikstury o nazwie (właściwości name) potionName z tablicy we właściwości potions.
+// updatePotionName(oldName, newName) - zmienia właściwość name obiektu-mikstury w tablicy potions z oldName do newName.
+// Zadeklarowano zmienną atTheOldToad
+// Wartość zmiennej atTheOldToad to obiekt
+// Wartość właściwości atTheOldToad.getPotions to metoda obiektu
+// Wywołanie metody atTheOldToad.getPotions() na oryginalnym obiekcie zwraca [ { name: "Speed potion", price: 460 }, { name: "Dragon breath", price: 780 }, { name: "Stone skin", price: 520 } ]
+// Wartość właściwości atTheOldToad.addPotion to metoda obiektu.
+// Dla oryginalnego obiektu, po wywołaniu metody atTheOldToad.addPotion({ name: "Invisibility", price: 620 }), w tablicy potions ostatnim elementem będzie ten obiekt
+// Dla oryginalnego obiektu, po wywołaniu metody atTheOldToad.addPotion({ name: "Power potion", price: 270 }), w tablicy potions ostatnim elementem będzie ten obiekt
+// Jeśli dodany potions już jest w tablicy potions, metoda addPotion zwraca ciąg z tekstem z kodu źródłowego
+// Jeśli dodany potions już jest w tablicy potions, metoda addPotion nie dodaje do niego przekazanego obiektu
+// Dla oryginalnego obiektu po wywołaniu atTheOldToad.addPotion({ name: "Dragon breath", price: 700 }), tablica potions się nie zmienia
+// Dla oryginalnego obiektu po wywołaniu atTheOldToad.addPotion({ name: "Stone skin", price: 240 }), tablica potions się nie zmienia
+// W przypadku oryginalnego obiektu wezwanie atTheOldToad.addPotion({ name: "Dragon breath", price: 700 }), zwraca ciąg "Error! Potion Dragon breath is already in your inventory!"
+// W przypadku oryginalnego obiektu wezwanie atTheOldToad.addPotion({ name: "Stone skin", price: 240 }), zwraca ciąg "Error! Potion Stone skin is already in your inventory!"
+// Wartość właściwości atTheOldToad.removePotion to metoda obiektu
+// Dla oryginalnego obiektu, po wywołaniu metody atTheOldToad.removePotion("Dragon breath"), właściwość potions będzie zawierać tablicę [ { name: "Speed potion", price: 460 }, { name: "Stone skin", price: 520 } ]
+// Dla oryginalnego obiektu, po wywołaniu metody atTheOldToad.removePotion("Speed potion"), właściwość potions będzie zawierać tablicę [ { name: "Dragon breath", price: 780 }, { name: "Stone skin", price: 520 }]
+// Wartość właściwości atTheOldToad.updatePotionName to metoda obiektu
+// Dla oryginalnego obiektu, po wywołaniu metody atTheOldToad.updatePotionName("Dragon breath", "Polymorth"), właściwość potions będzie zawierać tablicę [{ name: "Speed potion", price: 460 }, { name: "Polymorth", price: 780 }, { name: "Stone skin", price: 520 } ]
+// Dla oryginalnego obiektu, po wywołaniu metody atTheOldToad.updatePotionName("Stone skin", "Invulnerability potion"), właściwość potions będzie zawierać tablicę [{ name: "Speed potion", price: 460 }, { name: "Dragon breath", price: 780 }, { name: "Invulnerability potion", price: 520 } ]
+
+const atTheOldToad = {
+  potions: [
+    { name: 'Speed potion', price: 460 },
+    { name: 'Dragon breath', price: 780 },
+    { name: 'Stone skin', price: 520 },
+  ],
+  getPotions() {
+    return this.potions;
+  },
+  addPotion(newPotion) {
+    const potionNames = this.potions.map((potion) => potion.name);
+    if (potionNames.includes(newPotion.name)) {
+      return `Error! Potion ${newPotion.name} is already in your inventory!`;
+    }
+
+    this.potions.push(newPotion);
+  },
+  removePotion(potionName) {
+    const potionIndex = this.potions.findIndex(
+      (potion) => potion.name === potionName
+    );
+
+    if (potionIndex === -1) {
+      return `Potion ${potionName} is not in inventory!`;
+    }
+
+    this.potions.splice(potionIndex, 1);
+  },
+  updatePotionName(oldName, newName) {
+    const potionToUpdate = this.potions.find(
+      (potion) => potion.name === oldName
+    );
+
+    if (!potionToUpdate) {
+      return `Potion ${oldName} is not in inventory!`;
+    }
+
+    potionToUpdate.name = newName;
+  },
+};
+console.log(
+  atTheOldToad.updatePotionName('Stone skin', 'Invulnerability potion')
+);
