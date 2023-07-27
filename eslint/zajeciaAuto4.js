@@ -1,7 +1,192 @@
-function greet(name) {
-  return `Witaj ${name}`;
-}
-console.log(greet('Michal'));
+// function greet(name) {
+//   return `Witaj ${name}`;
+// }
+// console.log(greet('Michal'));
+//--------------------------------------------------------------
+// Funkcja wywołania zwrotnego
+// function greet(name) {
+//   console.log(`Pozdrawiam ${name}.`);
+// }
+
+// // Funkcja wyższego rzędu
+// function registerGuest(name, callback) {
+//   console.log(`Rejestracja gościa ${name}.`);
+//   callback(name);
+// }
+
+// registerGuest('Michal', greet); // jak wywolasz to z cl to dostaniesz undefined a tak niechcemy
+//--------------------------------------------------------------
+// Wywołania zwrotne inline
+
+// function registerGuest(name, callback) {
+//   console.log(`Rejestracja goscia ${name}`);
+//   callback(name);
+// }
+// //Przekazuje funkcje inline greet jako wywolanie zwrotne
+// registerGuest('Mango', function greet(name) {
+//   console.log(`Pozdrawiam ${name}.`);
+// });
+// //Przekazuje funkcje inline notify jako wywolanie zwrotne
+
+// registerGuest('Adriana', function notify(name) {
+//   console.log(
+//     `Szanowny(a) ${name}, Pana/Pani pokoj bedzie gotowy za 30 minut.`
+//   );
+// });
+
+//--------------------------------------------------------------
+// Kilka wywołań zwrotnych
+
+// function processCall(recipent) {
+//   // Symuluj dostępność abonenta za pomocą liczby losowej
+//   const isRecipentAvailable = Math.random() > 0.5;
+
+//   if (!isRecipentAvailable) {
+//     console.log(`Abonent ${recipent} jest niedostępny, zostaw wiadomość.`);
+//   } else {
+//     console.log(`Łączenie z ${recipent}, proszę czekać...`);
+//   }
+// }
+// processCall('Ada');
+
+//--------------------------------------------------------------
+// refakor funkcji wyzej
+
+// function processCall(recipient, onAvailable, onNotAvailable) {
+//   // Symuluj dostępność abonenta za pomocą liczby losowej
+//   const isRecipientAvailable = Math.random() > 0.5;
+
+//   if (!isRecipientAvailable) {
+//     onNotAvailable(recipient);
+//     return;
+//   }
+
+//   onAvailable(recipient);
+// }
+
+// function takeCall(name) {
+//   console.log(`Łączenie z ${name}, proszę czekać...`);
+//   // Logika odbierania połączenia
+// }
+
+// function activateAnsweringMachine(name) {
+//   console.log(`Abonent ${name} jest niedostępny, zostaw wiadomość.`);
+//   // Logika aktywacji automatycznej sekretarki
+// }
+
+// function leaveHoloMessage(name) {
+//   console.log(`Abonent ${name} jest niedostępny, nagraj hologram.`);
+//   // Logika nagrywania hologramu
+// }
+
+// processCall('Mango', takeCall, activateAnsweringMachine);
+// processCall('Poly', takeCall, leaveHoloMessage);
+//--------------------------------------------------------------
+
+// function printValue(value) {
+//   console.log(value);
+// }
+
+// function prettyPrint(value) {
+//   console.log('Logging value: ', value);
+// }
+
+// function repeat(n, action) {
+//   for (let i = 0; i < n; i += 1) {
+//     action(i);
+//   }
+// }
+
+// // Przekaż printValue jako funkcję zwrotną
+// repeat(5, printValue);
+// // 0
+// // 1
+// // 2
+
+// // Przekaż prettyPrint jako funkcję zwrotną
+// repeat(10, prettyPrint);
+// // Logging value: 0
+// // Logging value: 1
+// // Logging value: 2
+
+//--------------------------------------------------------------
+//Metoda forEach
+// Metoda do iteracji, zawarta w tablicach i używana jako zamiennik pętli for i for...of podczas pracy z kolekcją danych.
+
+// tablica.forEach(function callback(element, index, array) {
+//     // Ciało funkcji zwrotnej
+// });
+
+// const numbers = [5, 10, 15, 20, 25];
+// //Klasyczny for
+// for (let i = 0; i < numbers.length; i += 1) {
+//   console.log(`Indeks ${i}, wartość ${numbers[i]}`);
+// }
+
+// // Iterujący forEach
+// numbers.forEach(function (number, index) {
+//   console.log(`Indeks ${index}, wartość ${number}`);
+// });
+
+//--------------------------------------------------------------
+const students = [
+  { name: 'Mango', score: 83, courses: ['matematyka', 'fizyka'] },
+  { name: 'Poly', score: 59, courses: ['informatyka', 'matematyka'] },
+  { name: 'Ajax', score: 37, courses: ['fizyka', 'biologia'] },
+  { name: 'Kiwi', score: 94, courses: ['literatura', 'informatyka'] },
+];
+
+// const sortedByAscendingScore = [...students].sort((a, b) => a.score - b.score);
+// const names = sortedByAscendingScore.map((student) => student.name);
+
+// console.log(names); // ['Ajax', 'Poly', 'Mango', 'Kiwi']
+
+// const names = [...students]
+//   .sort((a, b) => a.score - b.score)
+//   .map((student) => student.name);
+
+// console.log(names); // ['Ajax', 'Poly', 'Mango', 'Kiwi']
+
+const uniqueSortedCourses = students
+  .flatMap((student) => student.courses)
+  .filter((course, index, array) => array.indexOf(course) === index)
+  .sort((a, b) => a.localeCompare(b));
+
+console.log(uniqueSortedCourses);
+
+//--------------------------------------------------------------
+
+// Funkcje strzałek
+
+// "Normalna" deklaracja funkcji
+// function classicAdd(a, b, c) {
+//   return a + b + c;
+// }
+
+// To samo w postaci arrow function
+// const arrowAdd = (a, b, c) => {
+//   return a + b + c;
+// };
+// console.log(arrowAdd(1, 2, 3));
+//--------------------------------------------------------------
+
+// const numbers = [5, 10, 15, 20, 25];
+
+// const logMessage = (number, index) => {
+//   console.log(`Indeks ${index}, wartość ${number}`);
+// };
+// numbers.forEach(logMessage);
+
+//--------------------------------------------------------------
+
+//--------------------------------------------------------------
+// const add = (...args) => {
+//   console.log(args);
+// };
+
+// add('m', 'michal', 3); // [1, 2, 3]
+
+//--------------------------------------------------------------
 
 // // function context this
 

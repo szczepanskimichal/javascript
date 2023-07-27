@@ -233,8 +233,8 @@
 
 // Metoda split(delimiter) pozwala zamienić string w talibcę, "dzieląc" go separatorem (delimiter). Jeśli separatorem jest pusty string, wtedy otrzymamy po prostu tablicę z pojedynczymi znakami jako elementami. Separatorem może być string składający się z zera, jednego lub więcej znaków
 
-// const name = "Mango";
-// console.log(name.split("")); // ["M", "a", "n", "g", "o"]
+const name = 'Mango';
+console.log(name.split('')); // ["M", "a", "n", "g", "o"]
 
 // const message = "JavaScript essentials";
 // console.log(message.split(" ")); // ["JavaScript", "essentials"]

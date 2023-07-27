@@ -1,3 +1,9 @@
+console.log(a);
+console.log('test');
+if (true) {
+  console.log('test');
+}
+
 //Excercise 1
 // Zadeklaruj dwie zmienne: productName dla nazwy produktu oraz pricePerItem do przechowywania ceny za sztukę. Przy deklaracji nadaj zmiennym następujące wartości
 
