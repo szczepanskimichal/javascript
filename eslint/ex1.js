@@ -233,7 +233,7 @@ const username = 'Maaaaaango452#$#@ąĘŻ';
 // console.log(msgAlt);
 // if else
 
-let cost = 15;
+// let cost = 15;
 // if (cost === 0) {
 //   console.log('service is free');
 // }
@@ -246,12 +246,58 @@ let cost = 15;
 // }
 
 // if...elseif
-if (cost === 0) {
-  console.log('service is free');
-} else if (cost <= 10) {
-  console.log('this service is cheap');
-} else if (cost > 10 && cost < 100) {
-  console.log('this service is somewhat expensive');
-} else {
-  console.log('this service is expensive');
-}
+// if (cost === 0) {
+//   console.log('service is free');
+// } else if (cost <= 10) {
+//   console.log('this service is cheap');
+// } else if (cost > 10 && cost < 100) {
+//   console.log('this service is somewhat expensive');
+// } else {
+//   console.log('this service is expensive');
+// }
+
+// for
+// for (let i = 0; i < 5; i++) {
+//   if (i === 2) {
+//     continue;
+//   }
+//   if (i === 4) {
+//     break;
+//   }
+//   console.log(i);
+// }
+
+// 1st loop -> i === 0
+// after 1st loop i++ => i === 1
+
+// 2st loop -> i === 1
+// after 2st loop i++ => i === 2
+
+// ...
+// i === 5 -> i < 5 => false
+// break loop
+
+// switch
+
+// let cost = 350;
+
+// switch (cost) {
+//   case 100: // cost === 100
+//     console.log('bronze');
+//     break;
+
+//   case 200: // cost === 200
+//     console.log('platinum');
+//     break;
+
+//   case 300:
+//   case 400:
+//     console.log('gold');
+
+//   case 150:
+//     console.log('dog');
+//     break;
+//   case 50:
+//   default:
+//     console.log('unknown');
+// }
