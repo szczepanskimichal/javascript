@@ -301,3 +301,169 @@
 // // const safeDivide = function(a, b) {
 // //   return b === 0 ? 0 : a / b
 // // }
+//---------------------------------------------------------
+//Funkcja wywołania zwrotnego
+// function greet(name) {
+//   return `Pozdrawiam ${name}.`;
+// }
+
+// // Wywołaj funkcję greet i wyświetl jej wynik w konsoli
+// console.log(greet('Mango')); // Pozdrawiam Mango.
+
+// // Wyświetl funkcję greet w konsoli bez jej wywoływania
+// console.log(greet); // ƒ greet() { return `Pozdrawiam ${name}.`; }
+//-----------------------------------------------------------
+//callback
+// function greet(name) {
+//   console.log(`Velkomen ${name} :)`);
+// }
+// function registerGuest(name, callback) {
+//   console.log(`gjesteregistrering ${name}`);
+//   callback(name);
+// }
+
+// registerGuest('Adriana', greet);
+//------------------------------------------------------------
+//Wywołania zwrotne inline
+
+// function registerGuest(name, callback) {
+//   console.log(`Gjesteregistrering ${name}.`);
+//   callback(name);
+// }
+// // Przekaż funkcję inline greet jako wywołanie zwrotne(CALLBACK!!!)
+// registerGuest('Adriana', function greet(name) {
+//   console.log(`Hilser ${name}`);
+// });
+// // Przekaż funkcję inline notify jako wywołanie zwrotne
+// registerGuest('Marysia', function notify(name) {
+//   console.log(`Kjære ${name}, Rommet ditt vil være klart om 30 minutter.`);
+// });
+
+//Kilka wywołań zwrotnych!!!!
+
+//najpierw funkcja dla pojasnienia
+
+// function processCall(recipient) {
+//   // Symuluj dostępność abonenta za pomocą liczby losowej
+//   const isRecipientAvailable = Math.random() > 0.5;
+
+//   if (!isRecipientAvailable) {
+//     console.log(`Abonent ${recipient} jest niedostępny, zostaw wiadomość.`);
+//     // Logika aktywacji automatycznej sekretarki
+//   } else {
+//     console.log(`Łączenie z ${recipient}, proszę czekać...`);
+//     // Logika odbierania połączenia
+//   }
+// }
+
+// //processCall('Mango');
+
+// //REFAKTOR PROCESScALL
+
+// function processCall(recipient, onAvailable, onNotAvailable) {
+//   // Symuluj dostępność abonenta za pomocą liczby losowej
+//   const isRecipientAvailable = Math.random() > 0.5;
+
+//   if (!isRecipientAvailable) {
+//     onNotAvailable(recipient);
+//     return;
+//   }
+
+//   onAvailable(recipient);
+// }
+
+// function takeCall(name) {
+//   console.log(`Łączenie z ${name}, proszę czekać...`);
+//   // Logika odbierania połączenia
+// }
+
+// function activateAnsweringMachine(name) {
+//   console.log(`Abonent ${name} jest niedostępny, zostaw wiadomość.`);
+//   // Logika aktywacji automatycznej sekretarki
+// }
+
+// function leaveHoloMessage(name) {
+//   console.log(`Abonent ${name} jest niedostępny, nagraj hologram.`);
+//   // Logika nagrywania hologramu
+// }
+
+// processCall('Poly', takeCall, activateAnsweringMachine);
+// processCall('Mango', takeCall, leaveHoloMessage);
+
+//---------------------------------------------------------------
+//Abstrakcja powtórzeń
+
+// for (let i = 1; i < 20; i += 1) {
+//   console.log(i);
+// }
+// function repeatLog(n) {
+//   for (let i = 1; i < 10; i += 1) {
+//     console.log(i);
+//   }
+// }
+// repeatLog(100);
+
+// function printValue(value) {
+//   console.log(value);
+// }
+// function prettyPrint(value) {
+//   console.log('Logging value: ', value);
+// }
+// function repeat(n, action) {
+//   for (let i = 0; i < n; i += 1) {
+//     action(i);
+//   }
+// }
+// repeat(3, printValue);
+// repeat(3, prettyPrint);
+//-------------------------------------------------------------------
+
+//Metoda forEach
+// const numbers = [5, 10, 15, 'Adriana', 25];
+
+// // Klasyczny for
+// // for (let i = 0; i < numbers.length; i += 1) {
+// //   console.log(`Indeks ${i}, wartość ${numbers[i]}`);
+// // }
+// // Iterujący forEach
+// numbers.forEach(function (number, index) {
+//   console.log(`Indeks ${index}, wartość ${number}`);
+// });
+// Jedynym warunkiem, pod którym należy użyć pętli for lub for...of do iteracji po tablicy, jest konieczność przerwania pętli. Nie możesz w łatwy sposób przerwać wykonywania metody forEach, domyślnie iteruje po tablicy do końca. Słowa kluczowe break i continue nie działają w pętli forEach!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+//--------------------------------------------------------------------
+//Funkcje strzałek
+
+// "Normalna" deklaracja funkcji
+// function classicFunkcja(a, b, c) {
+//   return a + b + c;
+// }
+// console.log(classicFunkcja(1, 2, 3));
+// // To samo w postaci arrow function
+// const arrowFunkcja = (a, b, c) => {
+//   return a + b + c;
+// };
+// console.log(arrowFunkcja(1, 2, 'Ada'));
+// const add = (a) => {
+//   return a + 5;
+// };
+// console.log(add(3));
+// console.log(add('Ada'));
+// const greet = () => {
+//   console.log('Cześć!');
+// };
+// greet();
+//-------------------------------------------------------------------
+//Funkcje strzałkowe jak callback
+
+const numbers = [5, 10, 15, 20, 25];
+// Anonimowa funkcja strzałkowa
+numbers.forEach((number, index) => {
+  console.log(`Indeks ${index}, wartość ${number}`);
+});
+
+const logMessage = (number, index) => {
+  console.log(`Indeks ${index}, wartość ${number}`);
+};
+
+numbers.forEach(logMessage);
