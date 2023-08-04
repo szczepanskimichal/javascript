@@ -233,8 +233,8 @@
 
 // Metoda split(delimiter) pozwala zamienić string w talibcę, "dzieląc" go separatorem (delimiter). Jeśli separatorem jest pusty string, wtedy otrzymamy po prostu tablicę z pojedynczymi znakami jako elementami. Separatorem może być string składający się z zera, jednego lub więcej znaków
 
-const name = 'Mango';
-console.log(name.split('')); // ["M", "a", "n", "g", "o"]
+// const name = 'Mango';
+// console.log(name.split('')); // ["M", "a", "n", "g", "o"]
 
 // const message = "JavaScript essentials";
 // console.log(message.split(" ")); // ["JavaScript", "essentials"]
@@ -563,9 +563,9 @@ console.log(name.split('')); // ["M", "a", "n", "g", "o"]
 
 // Metoda push() pozwala dodać jeden lub więcej elementów na końcu tablicy bez konieczności wskazywania nowych indeksów dla dodawanych elementów.
 
-// const planets = ["Earth", "Mars", "Venus"];
-// planets.push("Jupiter");
-// planets.push("Saturn", "Uranus", "Neptune");
+// const planets = ['Earth', 'Mars', 'Venus'];
+// planets.push('Jupiter');
+// planets.push('Saturn', 'Uranus', 'Neptune');
 
 // console.log(planets); // ['Earth', 'Mars', 'Venus', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
 
@@ -577,7 +577,15 @@ console.log(name.split('')); // ["M", "a", "n", "g", "o"]
 // Wywołanie funkcji createArrayOfNumbers(29, 34) zwraca [29, 30, 31, 32, 33, 34]
 // Wywołanie funkcji createArrayOfNumbers() z losowymi liczbami min i max zwraca prawidłową tablicę
 // W pętli for wykorzystywana jest metoda push
-
+//
+// function createArrayOfNumbers(min, max) {
+//   const number = [];
+//   for (let i = min; i < max; i++) {
+//     number.push[i];
+//   }
+//   return number;
+// }
+// createArrayOfNumbers(14, 17); //zwraca [14, 15, 16, 17];
 // function createArrayOfNumbers(min, max) {
 //   const number = [];
 //   for (let i = min; i <= max; i++) {
@@ -606,6 +614,7 @@ console.log(name.split('')); // ["M", "a", "n", "g", "o"]
 
 // function filterArray(numbers, value) {
 //   const filteredArray = [];
+
 //   for (let i = 0; i < numbers.length; i++) {
 //     if (numbers[i] > value) {
 //       filteredArray.push(numbers[i]);
@@ -613,6 +622,7 @@ console.log(name.split('')); // ["M", "a", "n", "g", "o"]
 //   }
 //   return filteredArray;
 // }
+
 // console.log(filterArray([1, 2, 3, 4, 5], 3));
 // console.log(filterArray([1, 2, 3, 4, 5], 4));
 // console.log(filterArray([1, 2, 3, 4, 5], 5));
@@ -624,12 +634,12 @@ console.log(name.split('')); // ["M", "a", "n", "g", "o"]
 
 // Metoda includes(value) sprawdza, czy w tablicy znajduje się element z wartością podaną dla parametru value i zwraca odpowiednio true lub false. Metodę tę stosujemy tylko dla typów prymitywnych (ponieważ porównanie odbywa się poprzez precyzyjny operator ===) i wtedy kiedy nie potrzebujemy znać indeksu poszukiwanego elementu.
 
-// const planets = ["Earth", "Mars", "Venus"];
+// const planets = ['Earth', 'Mars', 'Venus'];
 
-// console.log(planets.includes("Earth")); // true
-// console.log(planets.includes("Mars")); // true
-// console.log(planets.includes("Venus")); // true
-// console.log(planets.includes("Jupiter")); // false
+// console.log(planets.includes('Earth')); // true
+// console.log(planets.includes('Mars')); // true
+// console.log(planets.includes('Venus')); // true
+// console.log(planets.includes('Jupiter')); // false
 
 // Funkcja checkFruit(fruit) przyjmuje string z nazwą owocu (parametr fruit) i sprawdza, czy dany owoc znajduje się na tablicy fruits.
 
