@@ -30,12 +30,12 @@
 // Zadeklarowana zmienna pointer
 // Wartość zmiennej pointer to odnośnik do funkcji makePizza
 
-// function makePizza(){
-//     return "Your pizza is being prepared, please wait."
+// function makePizza() {
+//   return 'Your pizza is being prepared, please wait.';
 // }
 // const result = makePizza();
 // const pointer = makePizza;
-
+// console.log(makePizza());
 // Ex 2
 
 // Funkcja zwrotna (callback) - to funkcja, która jest przekazywana do innej funkcji jako argument i w swojej kolejce wywołuje przekazaną funkcję.
@@ -53,7 +53,7 @@
 //   callback(name);
 // }
 
-// registerGuest('Mango', greet);
+// registerGuest('Michal', greet);
 
 // // Przekazaliśmy odnośnik do funkcji greet jako argument, dlatego będzie ona przypisana do parametru callback i wywołana wewnątrz funkcji registerGuest za pomocą okrągłych nawiasów. Nazwa parametru dla callback może być dowolna, najważniejsze, aby pamiętać, że wartością będzie funkcja.
 
@@ -62,7 +62,7 @@
 // }
 
 // function rejestracjaGoscia(imie, callback) {
-//   console.log(`rejestrujemy frajera ${imie} i go skubiemy`);
+//   console.log(`rejestrujemy paaa ${imie} i go witamy`);
 //   callback(imie);
 // }
 

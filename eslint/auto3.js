@@ -739,10 +739,10 @@
 // console.log(countProps({ mail: 'poly@mail.com', isOnline: true, score: 500 }));
 
 // function countProps(object) {
-//   // Change code below this line
+//   Change code below this line
 //   const propCount = Object.keys(object).length;
 //   return propCount;
-//   // Change code above this line
+//   Change code above this line
 // }
 
 // Ex 15
@@ -792,16 +792,16 @@
 // Funkcja uwzględnia tylko własne właściwości obiektu
 
 // function countTotalSalary(salaries) {
-//     const salaryValues = Object.values(salaries);
-//     let totalSalary = 0;
+//   const salaryValues = Object.values(salaries);
+//   let totalSalary = 0;
 
-//     for (const salary of salaryValues) {
-//       totalSalary += salary;
-//     }
-
-//     return totalSalary;
+//   for (const salary of salaryValues) {
+//     totalSalary += salary;
 //   }
 
+//   return totalSalary;
+// }
+// console.log(countTotalSalary({ kiwi: 200, poly: 50, ajax: 150 }));
 // Ex 17
 
 // Dość często potrzebujemy manipulować tablicą obiektów o takich samych właściwościach i różnych ich wartościach.
@@ -2025,3 +2025,42 @@
 // console.log(
 //   atTheOldToad.updatePotionName('Stone skin', 'Invulnerability potion')
 // );
+// const bookShelf = {
+//   books: ['The last kingdom', 'The guardian of dreams'],
+//   getBooks() {
+//     return 'Returning all books';
+//   },
+//   addBook(bookName) {
+//     return `Adding book ${bookName}`;
+//   },
+//   removeBook(bookName) {
+//     const index = this.books.indexOf(bookName);
+//     if (index === -1) {
+//       this.books.splice(index, 1);
+//       return `Deleting book ${bookName}`;
+//     } else {
+//       return `Book ${bookName} not found`;
+//     }
+//   },
+//   updateBook(oldName, newName) {
+//     const index = this.books.indexOf(oldName);
+//     if (index === -1) {
+//       this.books[index] = newName;
+//       return `Updating book ${oldName} to ${newName}`;
+//     } else {
+//       return `Book ${oldName} not found`;
+//     }
+//   },
+// };
+// // console.log(bookShelf);
+// // console.log(bookShelf.getBooks());
+// // console.log(bookShelf.books);
+
+// // console.log(bookShelf.addBook('Marysia jest super kotem'));
+// // console.log(bookShelf);
+// // bookShelf.addBook;
+// // bookShelf.addBook('Haze');
+// // console.log(bookShelf);
+// bookShelf.removeBook('The last kingdom');
+// bookShelf.updateBook('Sands of dune', 'Dune');
+// console.log(bookShelf);
