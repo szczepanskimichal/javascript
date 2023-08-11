@@ -923,3 +923,61 @@
 // indexOf() zwróci 0, ponieważ szuka pierwszej zgodności.
 // Wartość parametru index wynosi 3.
 // Nie są równe, co oznacza, że to powtarzający się, a nie unikalny element.
+//------------------------------------------------------------------
+
+//kilka funkcji dla przypomnienia
+
+// function checkAdminPassword(password) {
+//   const Admin_Password = 'jqueryismyjam';
+//   if (password === Admin_Password) return 'Welcome!';
+//   return 'Access denied, wrong password!';
+// }
+// console.log(checkAdminPassword('mangohackzor'));
+// console.log(checkAdminPassword('polyhax'));
+// console.log(checkAdminPassword('jqueryismyjam'));
+
+//MAGAZYN TOWARÓW 3.0
+// function checkStorage(available, ordered) {
+//   if (ordered === 0) {
+//     return 'Your order is empty';
+//   }
+//   if (ordered > available) {
+//     return 'Your order is too large, not enough goods in stuck';
+//   }
+//   return 'The order is accepted, our manager will contact you';
+// }
+// console.log(checkStorage(100, 50));
+// console.log(checkStorage(100, 130));
+// console.log(checkStorage(70, 0));
+// console.log(checkStorage(200, 20));
+// console.log(checkStorage(200, 250));
+// console.log(checkStorage(150, 0));
+
+// function getExtremeElements(array) {
+//   const firstElement = array[0];
+//   const lastE = array[array.length - 1];
+//   if (array.length < 2) {
+//     return new Error('Array must have at least two elements!!!');
+//   }
+//   return [firstElement, lastE];
+// }
+// console.log(getExtremeElements([1, 2, 3, 4, 5]));
+// console.log(getExtremeElements(['Earth', 'Mars', 'Venus']));
+// console.log(getExtremeElements);
+
+// function calculateTotal(number) {
+//   let total = 0;
+
+//   for (let i = 1; i <= number; i++) {
+//     total += i;
+//   }
+
+//   return total;
+// }
+// console.log(calculateTotal(5));
+
+const planets = ['Earth', 'Mars', 'Venus'];
+
+for (let i = 0; i < planets.length; i += 1) {
+  console.log(planets[i]);
+}
